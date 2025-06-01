@@ -1,0 +1,2055 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBWAY CREATER 北京地铁创造者</title>
+    <script src="https://webapi.amap.com/maps?v=2.0&key=05c9fe578c91472a0f1a1dd6bef4abc1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/geotiff@2.0.7/dist-browser/geotiff.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei", sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        #container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        #header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        #map {
+            flex-grow: 1;
+            background-color: #e8e8e8;
+        }
+        
+        #controls {
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .toggle-btn {
+            position: absolute;
+            top: 10px;
+            z-index: 1000;
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-right: 10px;
+        }
+        .toggle-btn:hover {
+            background-color: #45a049;
+        }
+
+        #toggleLines {
+            top: 32px;
+            right: 630px;
+            background-color: #2196F3
+        }
+        #toggleLines:hover {
+            background-color: #0b7dda;
+        }
+
+        #predictBtn {
+            top: 32px;
+            right: 270px;
+        }
+        
+        #newLineBtn {
+            top: 32px;
+            right: 370px;
+        }
+        #newLinenameBtn {
+            top: 32px;
+            right: 470px;
+            background-color: #2196F3;
+        }
+        #newLinenameBtn:hover {
+            background-color: #0b7dda;
+        }
+        /* 热力图按钮样式 */
+        #showHeatmapCanvas {
+            top: 32px;
+            right: 790px;
+            background-color: #e67e22;
+        }
+        #showHeatmapCanvas:hover {
+            background-color: #d35400;
+        }
+
+        #clearnewline {
+            top: 32px;
+            right: 10px;
+            background-color: #f44336;
+        }
+        #clearnewline:hover {
+            background-color: #da190b;
+        }
+        /* 优化按钮样式 */
+        #optimizePath {
+            top: 32px;
+            right: 140px;
+            background-color: #9b59b6;
+        }
+        #optimizePath:hover {
+            background-color: #8e44ad;
+        }
+
+        /* 优化路径样式 */
+        .amap-polyline-optimized {
+            stroke-dasharray: 10, 5;
+            animation: dash 30s linear infinite;
+        }
+
+        @keyframes dash {
+            from {
+                stroke-dashoffset: 1000;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .help-btn {
+            position: absolute;
+            left: 560px;
+            top: 15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .help-btn:hover {
+            background-color: #2980b9;
+            transform: scale(1.1);
+        }
+
+        #helpModal {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .help-modal-content {
+            background-color: #f8f9fa;
+            margin: 5% auto; /* 减少上边距 */
+            padding: 25px;
+            border-radius: 8px;
+            width: 60%;
+            max-width: 600px;
+            max-height: 70vh; /* 限制最大高度 */
+            overflow-y: auto; /* 添加垂直滚动条 */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+            position: relative;
+        }
+
+        /* 自定义滚动条样式 */
+        .help-modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .help-modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .help-modal-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .help-modal-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .help-modal-content section {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .help-modal-content section:last-child {
+            border-bottom: none;
+        }
+
+        .help-modal-content h3 {
+            color: #2c3e50;
+            margin: 25px 0 15px 0;
+        }
+
+        .help-modal-content h4 {
+            color: #3498db;
+            margin: 15px 0 10px 0;
+        }
+
+        .help-modal-content ol, 
+        .help-modal-content ul {
+            padding-left: 25px;
+            margin: 10px 0;
+        }
+
+        .help-modal-content li {
+            margin-bottom: 8px;
+        }
+
+        .close-help {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #7f8c8d;
+            cursor: pointer;
+        }
+
+        .close-help:hover {
+            color: #34495e;
+        }
+        
+        .custom-tooltip {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 4px;
+            padding: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 14px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .custom-tooltip h3 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+        }
+        
+        .custom-tooltip p {
+            margin: 0;
+            color: #7f8c8d;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .modal-content h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .modal-content button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            float: right;
+        }
+        .modal-content button:hover {
+            background-color: #45a049;
+        }
+
+        .station-marker {
+            background: #2097ff;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .station-marker::after {
+            content: '';
+            position: absolute;
+            width: 30%;
+            height: 30%;
+            background: #ffcccc;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .station-info {
+            padding: 8px 12px;
+            background: #deffa9;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+            max-width: 300px; /* 增加宽度 */
+            word-wrap: break-word;
+            line-height: 1.5; /* 增加行高 */
+        }
+        
+        .line-name-label {
+            background: rgb(201, 243, 255);
+            padding: 4px 8px;
+            border: 1px solid #f9ffab;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 14px;
+            color: #333;
+            white-space: nowrap;
+        }
+        /* 高德地图自定义样式 */
+        .amap-icon img {
+            width: 8px;
+            height: 8px;
+        }
+        
+        .amap-marker-label {
+            border: none;
+            background-color: transparent;
+            white-space: nowrap;
+        }
+
+        /* 指南项样式 */
+        .guide-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+
+        .guide-item h4 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* 提示框样式 */
+        .notice-box {
+            padding: 15px;
+            background-color: #fff8e1;
+            border-radius: 6px;
+            border-left: 4px solid #ffc107;
+        }
+
+        /* 特殊文本样式 */
+        .warning {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+
+        .tip {
+            color: #388e3c;
+            font-style: italic;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .help-modal-content {
+                width: 85%;
+                max-height: 80vh;
+            }
+            
+            .guide-item, .notice-box {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>SUBWAY CREATER 北京地铁创造者</h1>
+            <button id="helpBtn" class="help-btn">?</button>
+        </div>
+        <div id="map"></div>
+        <div id="controls">
+            <button id="toggleLines" class="toggle-btn">隐藏现有线路名称</button>
+            <button id="newLinenameBtn" class="toggle-btn">隐藏模拟新路名称</button>
+            <button id="newLineBtn" class="toggle-btn">模拟线路</button>
+            <button id="clearnewline" class="toggle-btn">清空模拟线路</button>
+            <button id="predictBtn" class="toggle-btn" >预测客流</button>
+            <button id="optimizePath" class="toggle-btn">计算最优路径</button>
+            <button id="showHeatmapCanvas" class="toggle-btn">显示成本栅格图</button>
+            <button id="resetBtn" class="toggle-btn" style="top:32px; right: 940px; background-color: #6f5d03;">重置系统</button>
+
+            <div id="stationNameModal" class="modal">
+                <div class="modal-content">
+                    <h3>输入站点名称</h3>
+                    <input type="text" id="stationNameInput" placeholder="请输入站点名称">
+                    <button id="confirmStationName">确定</button>
+                </div>
+            </div>
+        
+            <div id="lineNameModal" class="modal">
+                <div class="modal-content">
+                    <h3>输入线路名称</h3>
+                    <input type="text" id="lineNameInput" placeholder="请输入线路名称">
+                    <button id="confirmLineName">确定</button>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+    
+    <div id="helpModal" class="modal">
+        <div class="help-modal-content">
+            <span class="close-help">&times;</span>
+            <h2>项目说明</h2>
+            
+            <section>
+                <h3>核心功能</h3>
+                <ul>
+                    <li><strong>新建线路</strong>：点击地图添加站点，创建新地铁线路</li>
+                    <li><strong>客流预测</strong>：基于人口、夜间灯光和POI数据预测站点客流</li>
+                    <li><strong>路径优化</strong>：根据成本栅格数据计算最优线路走向</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>使用指南</h3>
+                
+                <div class="guide-item">
+                    <h4>新建线路</h4>
+                    <ol>
+                        <li>点击<b>"模拟线路"</b>按钮进入绘制模式</li>
+                        <li class="warning">务必为每个站点命名（点击空白处会导致命名失败）</li>
+                        <li class="warning">完成所有站点后点击<b>"结束绘制"</b>为线路命名</li>
+                        <li class="tip">如操作失误请点击<b>"重置系统"</b>重新开始</li>
+                    </ol>
+                </div>
+                
+                <div class="guide-item">
+                    <h4>客流预测</h4>
+                    <ol>
+                        <li>完成线路绘制后点击<b>"预测客流"</b></li>
+                        <li>悬停站点查看预测结果</li>
+                        <li class="warning">注意功能范围限制（可通过<b>"显示成本栅格图"</b>查看）</li>
+                    </ol>
+                </div>
+                
+                <div class="guide-item">
+                    <h4>路径优化</h4>
+                    <ol>
+                        <li>完成线路绘制后点击<b>"计算最优路径"</b></li>
+                        <li class="warning">计算期间<b>不要操作地图</b>（缩放/平移）</li>
+                        <li class="warning">注意功能范围限制（可通过<b>"显示成本栅格图"</b>查看）</li>
+                        <li class="tip">计算较慢请耐心等待完成提示</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h3>重要提示</h3>
+                <div class="notice-box">
+                    <h4>数据加载</h4>
+                    <ul>
+                        <li>初次加载需3-5分钟（期间可正常使用<b>"模拟线路"</b>功能）</li>
+                        <li>现有线路显示即表示数据加载完成</li>
+                    </ul>
+                    
+                    <h4>成本栅格</h4>
+                    <ul>
+                        <li>首次显示需约10秒（后续无需重新加载）</li>
+                    </ul>
+                    
+                    <h4>系统重置</h4>
+                    <ul>
+                        <li><b>"重置系统"</b>不会清除已加载数据</li>
+                        <li>可安全使用不会影响性能</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // 初始化高德地图
+        const map = new AMap.Map('map', {
+            viewMode: '2D',
+            zoom: 11,
+            center: [116.4074, 39.9042],
+            mapStyle: 'amap://styles/whitesmoke'
+        });
+        
+        
+        // 线路颜色配置
+        const lineColors = {
+            "1号线八通线": "#c23a2b",
+            "2号线": "#006c35",
+            "4号线大兴线": "#5a2d86",
+            "5号线": "#a05ca1",
+            "6号线": "#d28200",
+            "7号线": "#ffcb05",
+            "8号线": "#009b77",
+            "9号线": "#97d700",
+            "10号线": "#0099d9",
+            "13号线": "#f8cbad",
+            "14号线西": "#ca9a8e",
+            "14号线北": "#ca9a8e",
+            "15号线": "#6a3d5a",
+            "16号线": "#e46c2b",
+            "昌平线": "#d28200",
+            "亦庄线": "#c23a2b",
+            "房山线": "#c23a2b",
+            "首都机场线": "#0099d9",
+            "S1线": "#c23a2b",
+            "燕房线": "#c23a2b",
+            "西郊线": "#c23a2b"
+        };
+        
+        // 存储线路和站点数据
+        let lineLayers = {};
+        let stationMarkers = {};
+        let lineLabels = {};
+        let stationData = {};
+        
+        // 当前缩放级别
+        let currentZoom = map.getZoom();
+
+        // 添加坐标转换函数
+        async function wgs84ToGcj02(lng, lat) {
+            const url = `https://restapi.amap.com/v3/assistant/coordinate/convert?locations=${lng},${lat}&coordsys=gps&key=05c9fe578c91472a0f1a1dd6bef4abc1`;
+            const response = await fetch(url);
+            const data = await response.json();
+            const tsrst = data.locations.split(",").map(Number); 
+            return(tsrst);
+        }
+        async function batchWgs84ToGcj02(coords) {
+            // 高德API限制：单次最多20个坐标
+            const BATCH_SIZE = 20;
+            const allResults = [];
+            
+            // 分批处理（每批最多20个坐标）
+            for (let i = 0; i < coords.length; i += BATCH_SIZE) {
+                const batch = coords.slice(i, i + BATCH_SIZE);
+                const locations = batch.map(coord => coord.join(",")).join("|");
+                const url = `https://restapi.amap.com/v3/assistant/coordinate/convert?locations=${locations}&coordsys=gps&key=05c9fe578c91472a0f1a1dd6bef4abc1`;
+                
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    
+                    if (data.status !== "1") {
+                        throw new Error(`批量转换失败: ${data.info || "未知错误"}`);
+                    }
+                    
+                    // 解析结果并映射回原坐标顺序
+                    const batchResults = data.locations.split(";").map(item => {
+                        const [lng, lat] = item.split(",").map(Number);
+                        return [lng, lat];
+                    });
+                    
+                    allResults.push(...batchResults);
+                } catch (error) {
+                    console.error(`第 ${i/BATCH_SIZE + 1} 批坐标转换失败:`, error);
+                    // 如果某批失败，填充null保持结果数组长度一致
+                    allResults.push(...new Array(batch.length).fill(null));
+                }
+                
+                // 避免触发QPS限制（建议延迟200-500ms）
+                await new Promise(resolve => setTimeout(resolve, 500));
+            }
+            
+            return allResults;
+        }
+                
+        // 根据缩放级别计算站点大小
+        function getStationSize(zoom, baseSize = 4, count = 0) {
+            // 反转缩放影响: 11-zoom 而不是 zoom-11
+            const zoomFactor = Math.pow(1.5, Math.max(0, zoom-14)); // 14是最大缩放级别
+            const countFactor = Math.min(count / 100000, 1); // 客流影响限制在1倍内
+            return Math.min(baseSize * zoomFactor * (1 + countFactor * 0.5), 20); // 最大不超过20
+        }
+
+        // 根据缩放级别计算线路宽度
+        function getLineWidth(zoom) {
+            // 基础宽度为3，zoom越大线条越细
+            return Math.max(1, 3 * Math.pow(1.2, Math.max(0, zoom-14)));
+        }
+
+        // 更新标签大小函数 
+        function updateLabelSizes() {
+            Object.keys(lineLabels).forEach(lineName => {
+                const label = lineLabels[lineName];
+                // zoom越大字体越小 (14是最大缩放级别)
+                const fontSize = Math.max(5, 8 - (5- currentZoom/2 )); 
+                label.setContent(`
+                    <div style="
+                        font-size: ${fontSize}px;
+                        color: ${lineColors[lineName] || '#333'}; 
+                        font-weight: bold; 
+                        text-shadow: 1px 1px 2px white;
+                        background: rgba(255,255,255,0.7);
+                        padding: 2px 6px;
+                        border-radius: 4px;
+                        border: 1px solid ${lineColors[lineName] || '#333'};
+                    ">${lineName}</div>
+                `);
+            });
+        }
+                
+        // 更新所有站点大小
+        function updateStationSizes() {
+            Object.keys(stationData).forEach(stationName => {
+                const data = stationData[stationName];
+                const count = data.properties.count || 0;
+                const size = getStationSize(currentZoom, 4, count);
+                
+                data.marker.setContent(`
+                    <div style="
+                        width: ${size}px; 
+                        height: ${size}px; 
+                        background-color: rgba(44, 62, 80, 0.7); 
+                        border-radius: 50%; 
+                        border: 1px solid rgba(255,255,255,0.5);
+                    "></div>
+                `);
+                data.marker.setOffset(new AMap.Pixel(-size/2, -size/2));
+            });
+        }
+        
+        // 更新所有线路宽度
+        function updateLineWidths() {
+            Object.values(lineLayers).forEach(line => {
+                line.setOptions({
+                    strokeWeight: getLineWidth(currentZoom)
+                });
+            });
+        }
+        
+        // 监听地图缩放事件 - 使用防抖优化性能
+        // 修改缩放事件监听器
+        let zoomTimeout;
+        map.on('zoomchange', function() {
+            currentZoom = map.getZoom();
+            
+            clearTimeout(zoomTimeout);
+            zoomTimeout = setTimeout(() => {
+                updateStationSizes();
+                updateLineWidths();
+                updateLabelSizes(); // 新增标签大小更新
+            }, 100);
+        });
+
+        // 设置站点悬停效果
+        function setupStationHoverEffects() {
+            Object.keys(stationData).forEach(stationName => {
+                const data = stationData[stationName];
+                const marker = data.marker;
+                const count = data.properties.count || 0;
+                
+                marker.on('mouseover', function(e) {
+                    const size = getStationSize(currentZoom, 4, count) * 1.2;
+                    marker.setContent(`
+                        <div style="
+                            width: ${size}px; 
+                            height: ${size}px; 
+                            background-color: rgba(231, 76, 60, 0.8); 
+                            border-radius: 50%; 
+                            border: 1px solid rgba(255,255,255,0.5);
+                        "></div>
+                    `);
+                    marker.setOffset(new AMap.Pixel(-size/2, -size/2));
+                    
+                    const tooltipContent = `
+                        <div class="custom-tooltip">
+                            <h3>${stationName}</h3>
+                            <p>客流量: ${count.toLocaleString()}</p>
+                        </div>
+                    `;
+                    
+                    const infoWindow = new AMap.InfoWindow({
+                        content: tooltipContent,
+                        offset: new AMap.Pixel(0, -size-10)
+                    });
+                    infoWindow.open(map, marker.getPosition());
+                    
+                    marker._infoWindow = infoWindow;
+                });
+                
+                marker.on('mouseout', function() {
+                    const size = getStationSize(currentZoom, 4, count);
+                    marker.setContent(`
+                        <div style="
+                            width: ${size}px; 
+                            height: ${size}px; 
+                            background-color: rgba(44, 62, 80, 0.7); 
+                            border-radius: 50%; 
+                            border: 1px solid rgba(255,255,255,0.5);
+                        "></div>
+                    `);
+                    marker.setOffset(new AMap.Pixel(-size/2, -size/2));
+                    
+                    if (marker._infoWindow) {
+                        marker._infoWindow.close();
+                    }
+                });
+            });
+        }
+
+        // 调试函数 - 检查数据加载状态
+        function checkDataStatus() {
+            console.log("检查数据加载状态...");
+            
+            // 测试数据文件是否能访问
+            const testFiles = [
+                "data/算法2/线路.geojson",
+                "data/算法2/站点数据.geojson",
+                "data/算法1/客流量.json"
+            ];
+            
+            testFiles.forEach(file => {
+                fetch(file)
+                    .then(response => {
+                        console.log(`${file} 访问状态: ${response.ok ? "成功" : "失败"}`);
+                        if (!response.ok) {
+                            console.error(`错误: ${response.status} ${response.statusText}`);
+                        }
+                        return response.text();
+                    })
+                    .then(text => {
+                        try {
+                            JSON.parse(text);
+                            console.log(`${file} 是有效的JSON格式`);
+                        } catch (e) {
+                            console.error(`${file} 不是有效的JSON格式`);
+                        }
+                    })
+                    .catch(error => {
+                        console.error(`访问 ${file} 出错:`, error);
+                    });
+            });
+        }
+        
+        // 加载数据
+        function loadData() {
+            // 先检查数据状态
+            checkDataStatus();
+            
+            // 使用Promise.all加载所有数据
+            Promise.all([
+                // 加载线路数据
+                fetch("./data/算法2/线路.geojson")
+                    .then(response => {
+                        if (!response.ok) throw new Error(`线路数据加载失败: ${response.status}`);
+                        return response.json();
+                    }),
+                
+                // 加载站点数据
+                fetch("./data/算法2/站点数据.geojson")
+                    .then(response => {
+                        if (!response.ok) throw new Error(`站点数据加载失败: ${response.status}`);
+                        return response.json();
+                    }),
+                
+                // 加载客流量数据
+                fetch("./data/算法1/客流量.json")
+                    .then(response => {
+                        if (!response.ok) throw new Error(`客流量数据加载失败: ${response.status}`);
+                        return response.json();
+                    })
+            ]).then(async ([lineGeoJSON, stationGeoJSON, excelData]) => {
+                console.log("数据加载成功，开始渲染...");
+                
+                // 站点坐标转换（针对Point类型优化）
+                const stationCoords = stationGeoJSON.features.map(f => f.geometry.coordinates);
+                const convertedStationCoords = await batchWgs84ToGcj02(stationCoords);
+
+                for (let i = 0; i < stationGeoJSON.features.length; i++) {
+                    const feature = stationGeoJSON.features[i];
+                    const originalCoord = feature.geometry.coordinates;
+                    
+                    try {
+                        if (convertedStationCoords[i] && 
+                            convertedStationCoords[i].length === 2 &&
+                            !isNaN(convertedStationCoords[i][0]) && 
+                            !isNaN(convertedStationCoords[i][1])) {
+                            
+                            feature.geometry.coordinates = convertedStationCoords[i];
+                            console.log(`站点 ${feature.properties.站点中} 转换成功`);
+                        } else {
+                            throw new Error("转换结果无效");
+                        }
+                    } catch (error) {
+                        console.error(`站点坐标转换失败: ${feature.properties.站点中}`, error);
+                        // 保持原始坐标（无需操作，因为原坐标未被修改）
+                    }
+                }
+
+                // 转换线路坐标
+                for (const feature of lineGeoJSON.features) {
+                    if (feature.geometry.type === "LineString") {
+                        const convertedPath = [];
+                        
+                        // 先收集当前LineString的所有坐标
+                        const coordsToConvert = feature.geometry.coordinates;
+                        
+                        // 批量转换当前LineString的所有坐标
+                        try {
+                            const convertedCoords = await batchWgs84ToGcj02(coordsToConvert);
+                            
+                            // 将结果写回convertedPath
+                            for (let i = 0; i < coordsToConvert.length; i++) {
+                                if (convertedCoords[i]) {
+                                    convertedPath.push(convertedCoords[i]);
+                                    console.log('坐标转换成功');
+                                } else {
+                                    console.error(`坐标转换失败: ${coordsToConvert[i]}`);
+                                    // 保留原坐标
+                                    convertedPath.push(coordsToConvert[i]);
+                                }
+                            }
+                            
+                        } catch (error) {
+                            console.error(`当前线段转换失败:`, error);
+                            // 整个LineString失败时保留原坐标
+                            convertedPath.push(...coordsToConvert);
+                        }
+                        
+                        feature.geometry.coordinates = convertedPath;
+                    }
+                }
+                
+                
+
+                // 绘制地铁线路
+                if (lineGeoJSON && lineGeoJSON.features) {
+                    lineGeoJSON.features.forEach(feature => {
+                        const lineName = feature.properties.linename;
+                        let path = [];
+
+                        if (feature.geometry.type === "LineString") {
+                            path = feature.geometry.coordinates.map(coord => {
+                                const lng = +coord[0];
+                                const lat = +coord[1];
+                                if (isNaN(lng) || isNaN(lat) || Math.abs(lat) > 90 || Math.abs(lng) > 180) {
+                                    console.error(`无效坐标 - 线路: ${lineName}, 坐标: [${lng}, ${lat}]`);
+                                    return [116.4074, 39.9042]; // 默认坐标
+                                }
+                                return [lng, lat];
+                            });
+                        }
+
+                        // 跳过空路径
+                        if (path.length === 0) {
+                            console.error(`线路 ${lineName} 无有效坐标点`);
+                            return;
+                        }
+
+                        // 创建线路（Polyline）
+                        const line = new AMap.Polyline({
+                            path: path,
+                            strokeColor: lineColors[lineName] || "#333333",
+                            strokeWeight: getLineWidth(currentZoom),
+                            zIndex: 10
+                        });
+                        map.add(line);
+                        lineLayers[lineName] = line;
+
+                        function getLineCenter(lineName, path) {
+                            // 特殊处理环形线路和需要固定位置的线路
+                            const fixedPositions = {
+                                    // 环线特殊处理
+                                "2号线": [116.345, 39.922], // 积水潭北边(西直门方向)
+                                "10号线": [116.282, 39.959], // 长春桥西边
+                                
+                                // 线性线路（终点附近）
+                                "5号线": [116.423, 40.082], // 天通苑北站北500米
+                                "6号线": [116.193, 39.946], // 潞城站东800米
+                                "7号线": [116.514, 39.873], // 焦化厂站东北方向
+                                "8号线": [116.353, 40.105], // 朱辛庄站东1公里
+                                "9号线": [116.285, 39.831], // 丰台南路站西800米
+                                "13号线": [116.330, 40.083], // 上地站西1公里
+                                "14号线西": [116.239, 39.850], // 张郭庄站西北方向
+                                "14号线北": [116.503, 39.983], // 将台站东1公里
+                                "15号线": [116.684, 40.150], // 俸伯站北1公里
+                                "16号线": [116.246, 40.044], // 北安河站南500米
+                                "17号线": [116.503, 39.913], // 十里河(保持原终点)
+                                
+                                // 郊区线路
+                                "昌平线": [116.231, 40.208], // 沙河站西1.5公里
+                                "亦庄线": [116.503, 39.798], // 亦庄火车站东南方向
+                                "房山线": [116.139, 39.745], // 长阳站东南1公里
+                                "燕房线": [116.016, 39.725], // 星城站北800米
+                                "首都机场线": [116.630, 40.070], // T3航站楼东1公里
+                                "西郊线": [116.190, 39.991], // 香山站前广场
+                                "S1线": [116.105, 39.915],  // 石厂站西500米
+                                "燕房线": [116.016, 39.725],  // 星城站北800米
+
+                                "1号线八通线": [path[path.length-1][0]-0.01, path[path.length-1][1]-0.01], // 终点附近(通州方向)
+                                "4号线大兴线": [path[path.length-1][0]-0.01, path[path.length-1][1]+0.01], // 终点附近(大兴方向)
+
+                            };
+
+                            if (fixedPositions[lineName]) {
+                                return fixedPositions[lineName];
+                            }
+                        }
+
+                        const center = getLineCenter(lineName, path);
+
+                        // 创建线路标签
+                        lineLabels[lineName] = new AMap.Marker({
+                            position: center,
+                            content: `<div style="font-size: 12px; color: ${lineColors[lineName] || '#333'}; font-weight: bold; text-shadow: 1px 1px 2px white;">${lineName}</div>`,
+                            offset: new AMap.Pixel(-20, -10)
+                        });
+                        map.add(lineLabels[lineName]);
+                    });
+                }
+                
+                // 绘制地铁站点
+                if (stationGeoJSON && stationGeoJSON.features) {
+                    stationGeoJSON.features.forEach(feature => {
+                        const stationName = feature.properties.站点中;
+                        const position = [feature.geometry.coordinates[0], feature.geometry.coordinates[1]];
+
+                        const lng = feature.geometry.coordinates[0];
+                        const lat = feature.geometry.coordinates[1];
+                        
+                        // 验证坐标是否为有效数字
+                        if (isNaN(lng) || isNaN(lat)) {
+                            console.error(`无效坐标 - 站点: ${stationName}, 坐标: [${lng}, ${lat}]`);
+                            return; // 跳过无效数据
+                        }
+                        
+                        // 创建站点标记
+                        const marker = new AMap.Marker({
+                            position: position,
+                            content: `
+                                <div style="
+                                    width: ${getStationSize(currentZoom, 4)}px; 
+                                    height: ${getStationSize(currentZoom, 4)}px; 
+                                    background-color: rgba(44, 62, 80, 0.7); 
+                                    border-radius: 50%; 
+                                    border: 1px solid rgba(255,255,255,0.5);
+                                "></div>
+                            `,
+                            offset: new AMap.Pixel(-getStationSize(currentZoom, 4)/2, -getStationSize(currentZoom, 4)/2),
+                            zIndex: 20
+                        });
+                        
+                        // 存储站点数据
+                        stationData[stationName] = {
+                            marker: marker,
+                            properties: feature.properties
+                        };
+                        
+                        map.add(marker);
+                        stationMarkers[stationName] = marker;
+                    });
+                } else {
+                    console.error("站点数据格式不正确");
+                }
+                
+                // 关联Excel数据到站点
+                if (excelData && Array.isArray(excelData)) {
+                    excelData.forEach(item => {
+                        const stationName = item["站点中文名"];
+                        const count = item["count"];
+                        
+                        if (stationData[stationName]) {
+                            stationData[stationName].properties.count = count;
+                        }
+                    });
+                    
+                    // 设置站点悬停效果
+                    setupStationHoverEffects();
+                    
+                    // 初始更新所有元素大小
+                    updateStationSizes();
+                    updateLineWidths();
+                    updateLabelSizes(); 
+                } else {
+                    console.error("客流量数据格式不正确");
+                }
+                
+                console.log("渲染完成");
+            }).catch(error => {
+                console.error("加载数据出错:", error);
+                
+                // 更友好的错误提示
+                const errorMsg = `数据加载失败，错误详情: ${error.message}`;
+                
+                alert(errorMsg);
+            });
+        }
+        
+        // 页面加载完成后执行
+        window.onload = function() {
+            // 添加加载状态提示
+            const loadingIndicator = document.createElement('div');
+            loadingIndicator.style.position = 'absolute';
+            loadingIndicator.style.top = '50%';
+            loadingIndicator.style.left = '50%';
+            loadingIndicator.style.transform = 'translate(-50%, -50%)';
+            loadingIndicator.style.backgroundColor = 'rgba(0,0,0,0.7)';
+            loadingIndicator.style.color = 'white';
+            loadingIndicator.style.padding = '20px';
+            loadingIndicator.style.borderRadius = '5px';
+            loadingIndicator.style.zIndex = '1000';
+            loadingIndicator.textContent = '正在加载数据...';
+            document.body.appendChild(loadingIndicator);
+            
+            // 加载数据
+            loadData();
+            loadGridData(); // 新增：加载网格数据
+            loadRealStationData();
+            
+            // 1秒后移除加载提示
+            setTimeout(() => {
+                document.body.removeChild(loadingIndicator);
+            }, 1000);
+        };
+        
+        // 切换线路标签显示
+        document.getElementById('toggleLines').addEventListener('click', function() {
+            this.classList.toggle('active');
+            
+            Object.values(lineLabels).forEach(label => {
+                if (label.getMap()) {
+                    label.setMap(null);
+                } else {
+                    label.setMap(map);
+                }
+            });
+        });
+    
+        ///以下为新建线路部分
+
+        // 全局变量
+        let realStationData = []; // 存储真实站点数据
+        let isDrawing = false;
+        let currentLine = null;
+        let currentMarkers = [];
+        let currentPath = [];
+        let allLines = [];
+        let infoWindow = null;
+        let zoomEndHandler = null;
+        let labelsVisible = true; // 线路名称标签是否可见
+        
+        // 获取DOM元素
+        const newLineBtn = document.getElementById('newLineBtn');
+        const newLinenameBtn = document.getElementById('newLinenameBtn');
+        const clearnewlineBtn = document.getElementById('clearnewline');
+        const stationNameModal = document.getElementById('stationNameModal');
+        const stationNameInput = document.getElementById('stationNameInput');
+        const confirmStationName = document.getElementById('confirmStationName');
+        const lineNameModal = document.getElementById('lineNameModal');
+        const lineNameInput = document.getElementById('lineNameInput');
+        const confirmLineName = document.getElementById('confirmLineName');
+        
+        // 标记点大小计算函数
+        function getMarkerSize(zoom) {
+            return Math.max(4, 4 * Math.pow(1.2, zoom - 12));
+        }
+        
+        // 更新标签大小
+        function updateLabelSize(label, zoom) {
+            if (!label || !label.getContent) return;
+            
+            const labelContent = label.getContent();
+            if (!labelContent || !labelContent.style) return;
+            
+            const labelSize = Math.max(12, 14 * Math.pow(1.1, zoom - 12));
+            labelContent.style.fontSize = `${labelSize}px`;
+            labelContent.style.padding = `${labelSize/4}px ${labelSize/2}px`;
+        }
+        
+        // 更新所有标记和标签
+        function updateAllMarkersAndLabels() {
+            const zoom = map.getZoom();
+            
+            // 更新当前正在绘制的标记
+            currentMarkers.forEach(marker => {
+                updateMarkerSize(marker, getMarkerSize(zoom));
+            });
+            
+            // 更新所有已保存线路的标记和标签
+            allLines.forEach(line => {
+                line.markers.forEach(marker => {
+                    updateMarkerSize(marker, getMarkerSize(zoom));
+                });
+                
+                if (line.label) {
+                    updateLabelSize(line.label, zoom);
+                }
+            });
+        }
+        
+        // 更新单个标记点大小
+        function updateMarkerSize(marker, size) {
+            if (!marker || !marker.getContent) return;
+            
+            const content = marker.getContent();
+            if (!content || !content.style) return;
+            
+            content.style.width = `${size}px`;
+            content.style.height = `${size}px`;
+            marker.setOffset(new AMap.Pixel(-size/2, -size/2));
+        }
+        
+        // 显示/隐藏所有线路名称标签
+        function toggleLineLabels() {
+            labelsVisible = !labelsVisible;
+            newLinenameBtn.textContent = labelsVisible ? '隐藏模拟线路名称' : '显示模拟线路名称';
+            
+            allLines.forEach(line => {
+                if (line.label) {
+                    if (labelsVisible) {
+                        line.label.show();
+                    } else {
+                        line.label.hide();
+                    }
+                }
+            });
+        }
+        
+        // 清空所有线路
+        function clearAllLines() {
+            if (!confirm('确定要清空所有线路吗？')) return;
+            
+            allLines.forEach(line => {
+                // 移除折线
+                if (line.polyline) {
+                    map.remove(line.polyline);
+                }
+                
+                // 移除标记点
+                line.markers.forEach(marker => {
+                    if (marker) {
+                        map.remove(marker);
+                    }
+                });
+                
+                // 移除标签
+                if (line.label) {
+                    map.remove(line.label);
+                }
+            });
+            
+            allLines = [];
+        }
+        
+        // 保存线路函数
+        function saveLine(lineName) {
+            const zoom = map.getZoom();
+            const labelPos = [
+                currentPath[0][0] + 0.005,
+                currentPath[0][1] + 0.005
+            ];
+            
+            // 创建标签内容
+            const labelContent = document.createElement('div');
+            labelContent.className = 'line-name-label';
+            labelContent.textContent = lineName;
+            
+            // 设置初始大小
+            const labelSize = Math.max(12, 14 * Math.pow(1.1, zoom - 12));
+            labelContent.style.fontSize = `${labelSize}px`;
+            labelContent.style.padding = `${labelSize/4}px ${labelSize/2}px`;
+            
+            const label = new AMap.Marker({
+                position: labelPos,
+                content: labelContent,
+                offset: new AMap.Pixel(0, 0),
+                map: map
+            });
+            
+            // 保存线路数据
+            allLines.push({
+                path: [...currentPath],
+                markers: [...currentMarkers],
+                polyline: currentLine,
+                name: lineName,
+                label: label
+            });
+            
+            resetDrawing();
+        }
+        
+        // 缩放事件处理
+        function setupZoomHandler() {
+            if (zoomEndHandler) {
+                map.off('zoomend', zoomEndHandler);
+            }
+            
+            zoomEndHandler = map.on('zoomend', function() {
+                updateAllMarkersAndLabels();
+            });
+        }
+        
+        // 开始绘制
+        function startDrawing() {
+            isDrawing = true;
+            newLineBtn.textContent = '结束绘制';
+            currentPath = [];
+            currentMarkers = [];
+            
+            map.on('click', onMapClick);
+            setupZoomHandler();
+        }
+        
+        // 结束绘制
+        function endDrawing() {
+            if (currentPath.length < 2) {
+                alert('至少需要两个点才能创建线路');
+                resetDrawing();
+                return;
+            }
+            
+            lineNameModal.style.display = 'block';
+            lineNameInput.focus();
+            
+            const onConfirmLineName = function() {
+                const lineName = lineNameInput.value.trim();
+                if (lineName) {
+                    saveLine(lineName);
+                    
+                    lineNameInput.value = '';
+                    lineNameModal.style.display = 'none';
+                    confirmLineName.removeEventListener('click', onConfirmLineName);
+                }
+            };
+            
+            confirmLineName.addEventListener('click', onConfirmLineName);
+            lineNameInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    onConfirmLineName();
+                }
+            });
+        }
+        
+        // 重置绘制状态
+        function resetDrawing() {
+            isDrawing = false;
+            newLineBtn.textContent = '新建线路';
+            
+            map.off('click', onMapClick);
+            if (zoomEndHandler) {
+                map.off('zoomend', zoomEndHandler);
+                zoomEndHandler = null;
+            }
+            
+            currentLine = null;
+            currentPath = [];
+            currentMarkers = [];
+        }
+        
+        // 地图点击事件处理函数
+        function onMapClick(e) {
+            if (!isDrawing) return;
+            
+            stationNameModal.style.display = 'block';
+            stationNameInput.focus();
+            
+            const clickPos = [e.lnglat.getLng(), e.lnglat.getLat()];
+            
+            const onConfirmStationName = function() {
+                const stationName = stationNameInput.value.trim();
+                if (stationName) {
+                    addStation(clickPos, stationName);
+                    
+                    stationNameInput.value = '';
+                    stationNameModal.style.display = 'none';
+                    confirmStationName.removeEventListener('click', onConfirmStationName);
+                }
+            };
+            
+            confirmStationName.addEventListener('click', onConfirmStationName);
+            stationNameInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    onConfirmStationName();
+                }
+            });
+        }
+        
+        // 添加站点
+        function addStation(position, name) {
+            const zoom = map.getZoom();
+            const size = getMarkerSize(zoom);
+            
+            const markerContent = document.createElement('div');
+            markerContent.className = 'station-marker';
+            markerContent.style.width = `${size}px`;
+            markerContent.style.height = `${size}px`;
+            
+            const marker = new AMap.Marker({
+                position: position,
+                map: map,
+                content: markerContent,
+                offset: new AMap.Pixel(-size/2, -size/2),
+                extData: { name: name }
+            });
+            
+            // 修改addStation函数中的悬停效果部分
+            marker.on('mouseover', function() {
+                if (infoWindow) infoWindow.close();
+                
+                const extData = marker.getExtData();
+                const content = `
+                    <div class="station-info">
+                        <strong>${extData.name}</strong><br>
+                        ${extData.predictedCount ? `预测客流: ${extData.predictedCount}` : ''}
+                    </div>
+                `;
+                
+                infoWindow = new AMap.InfoWindow({
+                    content: content,
+                    offset: new AMap.Pixel(0, -size/2 - 10),
+                    autoMove: true
+                });
+                infoWindow.open(map, position);
+            });
+            
+            marker.on('mouseout', function() {
+                if (infoWindow) infoWindow.close();
+            });
+            
+            currentMarkers.push(marker);
+            currentPath.push(position);
+            
+            // 更新或创建折线
+            if (currentLine) {
+                map.remove(currentLine);
+            }
+            
+            currentLine = new AMap.Polyline({
+                path: currentPath,
+                strokeColor: "#2980b9",
+                strokeWeight: 3,
+                strokeOpacity: 0.8,
+                lineJoin: 'round',
+                lineCap: 'round',
+                map: map
+            });
+        }
+        
+        // 事件监听
+        newLineBtn.addEventListener('click', function() {
+            if (!isDrawing) {
+                startDrawing();
+            } else {
+                endDrawing();
+            }
+        });
+        
+        newLinenameBtn.addEventListener('click', toggleLineLabels);
+        clearnewlineBtn.addEventListener('click', clearAllLines);
+        
+        // 点击模态框外部关闭模态框
+        window.addEventListener('click', function(event) {
+            if (event.target === stationNameModal) {
+                stationNameModal.style.display = 'none';
+            }
+            if (event.target === lineNameModal) {
+                lineNameModal.style.display = 'none';
+            }
+        });
+
+        ///以下为最短路径部分
+        // A*算法实现
+        class AStarPathfinder {
+            constructor(costGrid, width, height) {
+                this.grid = costGrid;
+                this.width = width;
+                this.height = height;
+            }
+
+            heuristic(pos1, pos2) {
+                // 欧几里得距离（支持斜向移动）
+                const dx = pos1.x - pos2.x;
+                const dy = pos1.y - pos2.y;
+                return Math.sqrt(dx * dx + dy * dy);
+            }
+
+            async findPath(start, end) {
+                const openSet = [start];
+                const closedSet = new Set();
+                const cameFrom = {};
+                const gScore = {};
+                const fScore = {};
+
+                // 初始化
+                gScore[`${start.x},${start.y}`] = 0;
+                fScore[`${start.x},${start.y}`] = this.heuristic(start, end);
+
+                while (openSet.length > 0) {
+                    // 获取fScore最小的节点
+                    openSet.sort((a, b) => fScore[`${a.x},${a.y}`] - fScore[`${b.x},${b.y}`]);
+                    const current = openSet.shift();
+
+                    // 到达终点
+                    if (current.x === end.x && current.y === end.y) {
+                        return this.reconstructPath(cameFrom, current);
+                    }
+
+                    closedSet.add(`${current.x},${current.y}`);
+
+                    // 检查相邻节点
+                    for (const neighbor of this.getNeighbors(current)) {
+                        if (closedSet.has(`${neighbor.x},${neighbor.y}`)) continue;
+
+                        // 计算临时gScore
+                        const tentativeGScore = (gScore[`${current.x},${current.y}`] || Infinity) + 
+                                            this.getCost(neighbor.x, neighbor.y);
+
+                        if (!openSet.some(n => n.x === neighbor.x && n.y === neighbor.y)) {
+                            openSet.push(neighbor);
+                        } else if (tentativeGScore >= (gScore[`${neighbor.x},${neighbor.y}`] || Infinity)) {
+                            continue;
+                        }
+
+                        // 这是目前的最佳路径
+                        cameFrom[`${neighbor.x},${neighbor.y}`] = current;
+                        gScore[`${neighbor.x},${neighbor.y}`] = tentativeGScore;
+                        fScore[`${neighbor.x},${neighbor.y}`] = tentativeGScore + this.heuristic(neighbor, end);
+                    }
+                }
+
+                return null; // 未找到路径
+            }
+
+            getNeighbors(node) {
+                const neighbors = [];
+                const directions = [
+                    {x: 0, y: -1},  // 上
+                    {x: 1, y: 0},   // 右
+                    {x: 0, y: 1},   // 下
+                    {x: -1, y: 0},   // 左
+                    {x: 1, y: -1},  // 右上
+                    {x: 1, y: 1},   // 右下
+                    {x: -1, y: 1},  // 左下
+                    {x: -1, y: -1}  // 左上
+                ];
+
+                for (const dir of directions) {
+                    const x = node.x + dir.x;
+                    const y = node.y + dir.y;
+                    
+                    if (x >= 0 && x < this.width && y >= 0 && y < this.height) {
+                        neighbors.push({x, y});
+                    }
+                }
+
+                return neighbors;
+            }
+
+            getCost(x, y, prevNode) {
+                const baseCost = this.grid[y * this.width + x] || 1;
+                
+                // 如果是斜向移动，增加成本（可选）
+                if (prevNode && (x !== prevNode.x && y !== prevNode.y)) {
+                    return baseCost * 1.414; // 对角线成本更高
+                }
+                return baseCost;
+            }
+
+            reconstructPath(cameFrom, current) {
+                const path = [current];
+                while (cameFrom[`${current.x},${current.y}`]) {
+                    current = cameFrom[`${current.x},${current.y}`];
+                    path.unshift(current);
+                }
+                return path;
+            }
+        }
+
+        let costGrid = null;
+        let gridWidth = 0;
+        let gridHeight = 0;
+        let gridBounds = null;
+
+        // 加载成本栅格数据
+        async function loadCostGrid() {
+            try {
+                const response = await fetch('./data/算法2/成本栅格/成本栅格.tif');
+                const arrayBuffer = await response.arrayBuffer();
+                const tiff = await GeoTIFF.fromArrayBuffer(arrayBuffer);
+                const image = await tiff.getImage();
+                
+                // 读取栅格数据
+                const raster = await image.readRasters();
+                costGrid = raster[0]; // 假设单波段栅格
+                
+                // 获取栅格信息
+                gridWidth = image.getWidth();
+                gridHeight = image.getHeight();
+                gridBounds = image.getBoundingBox();
+                
+                console.log('成本栅格加载成功', {width: gridWidth, height: gridHeight});
+            } catch (error) {
+                console.error('加载成本栅格失败:', error);
+            }
+        }
+
+        // 地理坐标转栅格坐标
+        function lngLatToGrid(lng, lat) {
+            if (!gridBounds) return null;
+            
+            const xRatio = (lng - gridBounds[0]) / (gridBounds[2] - gridBounds[0]);
+            const yRatio = (lat - gridBounds[1]) / (gridBounds[3] - gridBounds[1]);
+            
+            return {
+                x: Math.floor(xRatio * gridWidth),
+                y: Math.floor((1 - yRatio) * gridHeight) // 栅格Y轴与地理Y轴相反
+            };
+        }
+
+        // 栅格坐标转地理坐标
+        function gridToLngLat(x, y) {
+            if (!gridBounds) return null;
+            
+            const lng = gridBounds[0] + (x / gridWidth) * (gridBounds[2] - gridBounds[0]);
+            const lat = gridBounds[1] + ((gridHeight - y) / gridHeight) * (gridBounds[3] - gridBounds[1]);
+            
+            return [lng, lat];
+        }
+
+        // 优化路径按钮点击事件
+        document.getElementById('optimizePath').addEventListener('click', async function() {
+            if (allLines.length === 0) {
+                alert('请先创建模拟线路');
+                return;
+            }
+            
+            if (!costGrid) {
+                alert('正在加载成本栅格数据...');
+                await loadCostGrid();
+                if (!costGrid) {
+                    alert('加载成本数据失败');
+                    return;
+                }
+            }
+            
+            // 对每条线路进行优化
+            for (const line of allLines) {
+                if (line.markers.length < 2) continue;
+                
+                const optimizedPath = [];
+                
+                // 分段优化每两个站点之间的路径
+                for (let i = 0; i < line.markers.length - 1; i++) {
+                    const startMarker = line.markers[i];
+                    const endMarker = line.markers[i + 1];
+                    
+                    const startPos = startMarker.getPosition();
+                    const endPos = endMarker.getPosition();
+                    
+                    // 转换为栅格坐标
+                    const startGrid = lngLatToGrid(startPos.lng, startPos.lat);
+                    const endGrid = lngLatToGrid(endPos.lng, endPos.lat);
+                    
+                    if (!startGrid || !endGrid) {
+                        optimizedPath.push([startPos.lng, startPos.lat]);
+                        continue;
+                    }
+                    
+                    // 使用A*算法计算最优路径
+                    const pathfinder = new AStarPathfinder(costGrid, gridWidth, gridHeight);
+                    const gridPath = await pathfinder.findPath(startGrid, endGrid);
+                    
+                    if (gridPath && gridPath.length > 0) {
+                        // 将栅格路径转回地理坐标
+                        const geoPath = gridPath.map(point => gridToLngLat(point.x, point.y));
+                        optimizedPath.push(...geoPath);
+                    } else {
+                        optimizedPath.push([startPos.lng, startPos.lat]);
+                    }
+                }
+                
+                // 添加最后一个点
+                const lastPos = line.markers[line.markers.length - 1].getPosition();
+                optimizedPath.push([lastPos.lng, lastPos.lat]);
+                
+                // 更新线路
+                if (line.polyline) {
+                    map.remove(line.polyline);
+                }
+                
+                line.polyline = new AMap.Polyline({
+                    path: optimizedPath,
+                    strokeColor: "#e74c3c",
+                    strokeWeight: 4,
+                    strokeOpacity: 0.8,
+                    lineJoin: 'round',
+                    lineCap: 'round',
+                    map: map
+                });
+                
+                line.path = optimizedPath;
+            }
+            
+            alert('路径优化完成！');
+        });
+
+        ///以下为客流预测部分
+        //全局变量
+        let predictBtn = document.getElementById('predictBtn');
+        let gridData = []; // 存储网格数据
+
+        // 加载真实站点数据
+        async function loadRealStationData() {
+            try {
+                const response = await fetch("data/算法1/流量人口灯光.json"); // 替换为你的JSON文件路径
+                realStationData = await response.json();
+                console.log("真实站点数据加载成功");
+            } catch (error) {
+                console.error("加载真实站点数据失败:", error);
+            }
+        }
+
+        // 加载网格数据
+        async function loadGridData() {
+            try {
+                const response = await fetch("data/算法1/用于确定数据.json"); // 替换为你的JSON文件路径
+                gridData = await response.json();
+                console.log("网格数据加载成功");
+            } catch (error) {
+                console.error("加载网格数据失败:", error);
+            }
+        }
+
+        // 使用KNN算法预测客流量
+        function predictWithKNN(targetStation, k = 3) {
+            if (realStationData.length === 0) return null;
+            
+            // 计算目标站点的特征向量
+            const targetFeatures = [
+                parseFloat(targetStation.population) || 0,
+                parseFloat(targetStation.nightLight) || 0,
+                parseFloat(targetStation.poiCount) || 0
+            ];
+            
+            // 计算所有真实站点与目标站点的距离
+            const distances = realStationData.map(station => {
+                const features = [
+                    parseFloat(station.人口) || 0,
+                    parseFloat(station.夜间灯光) || 0,
+                    parseFloat(station.poi) || 0
+                ];
+                
+                // 计算欧氏距离
+                const distance = Math.sqrt(
+                    features.reduce((sum, feature, i) => {
+                        return sum + Math.pow(feature - targetFeatures[i], 2);
+                    }, 0)
+                );
+                
+                return {
+                    station: station,
+                    distance: distance
+                };
+            });
+            
+            // 按距离排序并取前k个最近邻
+            const nearestNeighbors = distances
+                .sort((a, b) => a.distance - b.distance)
+                .slice(0, k);
+            
+            // 计算预测客流量（取最近邻的平均值）
+            const predictedCount = nearestNeighbors.reduce((sum, neighbor) => {
+                return sum + parseFloat(neighbor.station.count);
+            }, 0) / nearestNeighbors.length;
+            
+            return {
+                predictedCount: Math.round(predictedCount),
+                nearestStation: nearestNeighbors[0].station, // 最相似的站点
+                allNeighbors: nearestNeighbors // 所有最近邻（用于调试）
+            };
+        }
+
+        // 添加预测客流功能
+        function predictPassengerFlow() {
+            if (allLines.length === 0) {
+                alert('请先创建模拟线路');
+                return;
+            }
+            
+            // 检查数据是否已加载
+            if (gridData.length === 0 || realStationData.length === 0) {
+                alert('正在加载数据，请稍后再试');
+                Promise.all([loadGridData(), loadRealStationData()]).then(() => {
+                    predictPassengerFlow(); // 数据加载完成后重新调用
+                });
+                return;
+            }
+            
+            // 为每个站点计算预测客流和附加信息
+            allLines.forEach(line => {
+                line.markers.forEach(marker => {
+                    const position = marker.getPosition();
+                    const nearestGrid = findNearestGridPoint(position.lng, position.lat);
+                    
+                    if (!nearestGrid) {
+                        console.warn('无法找到网格数据:', position);
+                        return;
+                    }
+                    
+                    // 准备目标站点数据
+                    const targetStation = {
+                        population: nearestGrid.value,
+                        nightLight: nearestGrid.MEAN,
+                        poiCount: nearestGrid.POIsum
+                    };
+                    
+                    // 使用KNN预测客流量
+                    const prediction = predictWithKNN(targetStation);
+                    
+                    if (!prediction) {
+                        console.warn('无法预测客流量:', position);
+                        return;
+                    }
+                    
+                    // 设置预测结果
+                    marker.setExtData({
+                        ...marker.getExtData(),
+                        predictedCount: prediction.predictedCount,
+                        population: nearestGrid.value,
+                        nightLight: nearestGrid.MEAN,
+                        poiCount: nearestGrid.POIsum,
+                        similarStation: prediction.nearestStation['站点中文名'],
+                        similarStationRank: prediction.nearestStation['刷卡排名']
+                    });
+                    
+                    // 更新悬停信息窗口
+                    marker.off('mouseover');
+                    marker.on('mouseover', function() {
+                        if (infoWindow) infoWindow.close();
+                        
+                        const extData = marker.getExtData();
+                        const content = `
+                            <div class="station-info">
+                                <strong>${extData.name}</strong><br>
+                                ${extData.predictedCount ? `预测客流: ${extData.predictedCount}` : ''}<br>
+                                ${extData.population ? `人口: ${extData.population}` : ''}<br>
+                                ${extData.nightLight ? `夜间灯光值: ${extData.nightLight}` : ''}<br>
+                                ${extData.poiCount ? `附近POI总数: ${extData.poiCount}` : ''}<br>
+                                ${extData.similarStation ? `最相似站点: ${extData.similarStation}` : ''}<br>
+                                ${extData.similarStationRank ? `刷卡排名: ${extData.similarStationRank}` : ''}
+                            </div>
+                        `;
+                        
+                        infoWindow = new AMap.InfoWindow({
+                            content: content,
+                            offset: new AMap.Pixel(0, -getMarkerSize(map.getZoom())/2 - 10),
+                            autoMove: true
+                        });
+                        infoWindow.open(map, marker.getPosition());
+                    });
+                });
+            });
+            
+            alert('客流预测完成！');
+        }
+
+        // 找到离给定坐标最近的网格点
+        function findNearestGridPoint(lng, lat) {
+            if (gridData.length === 0) return null;
+            
+            let nearestPoint = null;
+            let minDistance = Infinity;
+            
+            gridData.forEach(point => {
+                const pointLng = parseFloat(point.X);
+                const pointLat = parseFloat(point.Y);
+                
+                // 计算两点之间的距离（简化版，不考虑地球曲率）
+                const distance = Math.sqrt(
+                    Math.pow(lng - pointLng, 2) + 
+                    Math.pow(lat - pointLat, 2)
+                );
+                
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    nearestPoint = point;
+                }
+            });
+            
+            return nearestPoint;
+        }
+
+        // 添加事件监听
+        predictBtn.addEventListener('click', predictPassengerFlow);
+
+        ///以下为成本栅格显示部分
+        let heatmapLayer = null; // 热力图层
+        let costGridCanvas = null; // 成本栅格图的canvas元素
+        let isHeatmapVisible = false; // 是否显示热力图
+
+        async function loadCostGrid() {
+            try {
+                const response = await fetch('./data/算法2/成本栅格/成本栅格.tif');
+                const arrayBuffer = await response.arrayBuffer();
+                const tiff = await GeoTIFF.fromArrayBuffer(arrayBuffer);
+                const image = await tiff.getImage();
+                
+                // 读取栅格数据
+                const raster = await image.readRasters();
+                costGrid = raster[0]; // 假设单波段栅格
+                
+                // 获取栅格信息
+                gridWidth = image.getWidth();
+                gridHeight = image.getHeight();
+                gridBounds = image.getBoundingBox();
+                
+                console.log('成本栅格加载成功', {width: gridWidth, height: gridHeight});
+                
+                // 创建热力图数据
+                createHeatmapData(raster[0], gridWidth, gridHeight, gridBounds);
+                
+            } catch (error) {
+                console.error('加载成本栅格失败:', error);
+            }
+        }
+
+        function createHeatmapData(gridData, width, height, bounds) {
+            // 创建canvas元素
+            costGridCanvas = document.createElement('canvas');
+            costGridCanvas.width = width;
+            costGridCanvas.height = height;
+            const ctx = costGridCanvas.getContext('2d');
+            
+            // 计算统计值增强对比度
+            const values = [...gridData].filter(v => !isNaN(v));
+            values.sort((a, b) => a - b);
+            
+            // 使用5%和95%分位数来拉伸对比度（避免极端值影响）
+            const lowerPercentile = values[Math.floor(values.length * 0.05)];
+            const upperPercentile = values[Math.floor(values.length * 0.95)];
+            const range = upperPercentile - lowerPercentile;
+            
+            console.log('成本值范围:', {
+                min: values[0], 
+                max: values[values.length-1],
+                lower5: lowerPercentile,
+                upper95: upperPercentile
+            });
+
+            // 创建图像数据
+            const imageData = ctx.createImageData(width, height);
+            const data = imageData.data;
+            
+            // 改进的颜色映射函数（更强烈的对比）
+            function getColor(value) {
+                // 归一化到0-1范围（基于5%-95%分位数）
+                const normalized = Math.min(1, Math.max(0, 
+                    (value - lowerPercentile) / range
+                ));
+                
+                // 使用HSL颜色空间 - 从红色(0)到黄色(60)到绿色(120)
+                const hue = 120 * (1 - normalized); 
+                const saturation = 100;
+                const lightness = 50;
+                
+                // 转换HSL到RGB
+                const c = (1 - Math.abs(2 * lightness/100 - 1)) * saturation/100;
+                const x = c * (1 - Math.abs((hue/60) % 2 - 1));
+                const m = lightness/100 - c/2;
+                
+                let r, g, b;
+                if (hue < 60) {
+                    [r, g, b] = [c, x, 0];
+                } else if (hue < 120) {
+                    [r, g, b] = [x, c, 0];
+                } else {
+                    [r, g, b] = [0, c, x];
+                }
+                
+                return [
+                    Math.round(255 * (r + m)),
+                    Math.round(255 * (g + m)),
+                    Math.round(255 * (b + m)),
+                    180 // 透明度
+                ];
+            }
+
+            // 填充像素数据
+            for (let i = 0; i < gridData.length; i++) {
+                const value = gridData[i];
+                const [r, g, b, a] = getColor(value);
+                
+                const idx = i * 4;
+                data[idx] = r;     // R
+                data[idx+1] = g;   // G
+                data[idx+2] = b;   // B
+                data[idx+3] = a;   // A
+            }
+            
+            ctx.putImageData(imageData, 0, 0);
+            
+            // 创建热力图层（降低透明度使底图可见）
+            heatmapLayer = new AMap.ImageLayer({
+                url: costGridCanvas.toDataURL(),
+                bounds: new AMap.Bounds(
+                    [bounds[0], bounds[1]], // 左下角
+                    [bounds[2], bounds[3]]  // 右上角
+                ),
+                opacity: 0.6 
+            });
+        }
+
+        function toggleHeatmap() {
+            if (!heatmapLayer) {
+                alert('正在加载成本栅格数据...');
+                loadCostGrid().then(() => {
+                    if (heatmapLayer) {
+                        toggleHeatmap();
+                    } else {
+                        alert('加载成本数据失败');
+                    }
+                });
+                return;
+            }
+            
+            isHeatmapVisible = !isHeatmapVisible;
+            
+            if (isHeatmapVisible) {
+                map.add(heatmapLayer);
+                document.getElementById('showHeatmapCanvas').textContent = '隐藏成本栅格图';
+            } else {
+                map.remove(heatmapLayer);
+                document.getElementById('showHeatmapCanvas').textContent = '显示成本栅格图';
+            }
+        }
+
+        document.getElementById('showHeatmapCanvas').addEventListener('click', toggleHeatmap);
+
+        ///以下为重置部分
+        let initialMapState = {
+            center: [116.4074, 39.9042],
+            zoom: 11
+        };
+        function resetSystem() {
+            if (!confirm('确定要重置系统吗？这将清除所有绘图和模拟数据，但会保留已加载的基础数据。')) {
+                return;
+            }
+
+            try {
+                // 1. 重置地图视图
+                map.setCenter(initialMapState.center);
+                map.setZoom(initialMapState.zoom);
+                
+                // 2. 清除所有模拟线路
+                clearAllLines();
+                
+                // 3. 重置热力图状态
+                if (heatmapLayer && heatmapLayer.getMap()) {
+                    map.remove(heatmapLayer);
+                    isHeatmapVisible = false;
+                    document.getElementById('showHeatmapCanvas').textContent = '显示成本栅格图';
+                }
+                
+                // 4. 重置优化路径状态
+                if (currentLine) {
+                    map.remove(currentLine);
+                    currentLine = null;
+                }
+                
+                // 5. 重置绘制状态
+                isDrawing = false;
+                newLineBtn.textContent = '新建线路';
+                currentPath = [];
+                
+                // 6. 清除所有当前标记
+                currentMarkers.forEach(marker => {
+                    if (marker && marker.getMap()) {
+                        map.remove(marker);
+                    }
+                });
+                currentMarkers = [];
+                
+                // 7. 重置标签显示状态
+                labelsVisible = true;
+                newLinenameBtn.textContent = '隐藏模拟线路名称';
+                
+                // 8. 关闭所有信息窗口
+                if (infoWindow) {
+                    infoWindow.close();
+                }
+                
+                console.log('系统已重置');
+                alert('系统已重置到初始状态');
+            } catch (error) {
+                console.error('重置过程中出错:', error);
+                alert('重置过程中出错，请刷新页面');
+            }
+        }
+
+        document.getElementById('resetBtn').addEventListener('click', resetSystem);
+
+        ///以下为说明部分
+        // 获取DOM元素
+        const helpBtn = document.getElementById('helpBtn');
+        const helpModal = document.getElementById('helpModal');
+        const closeHelp = document.querySelector('.close-help');
+
+        // 点击帮助按钮显示模态框
+        helpBtn.addEventListener('click', function() {
+            helpModal.style.display = 'block';
+        });
+
+        // 点击关闭按钮隐藏模态框
+        closeHelp.addEventListener('click', function() {
+            helpModal.style.display = 'none';
+        });
+
+        // 点击模态框外部关闭
+        window.addEventListener('click', function(event) {
+            if (event.target === helpModal) {
+                helpModal.style.display = 'none';
+            }
+        });
+
+    </script>
+</body>
+</htm

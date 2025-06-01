@@ -1,0 +1,2305 @@
+[
+  {
+    "stationid": "1",
+    "stationname": "MUXIDI",
+    "count": "598800",
+    "站点中文名": "木樨地",
+    "刷卡排名": "142"
+  },
+  {
+    "stationid": "2",
+    "stationname": "GUCHENG",
+    "count": "653457",
+    "站点中文名": "古城",
+    "刷卡排名": "117"
+  },
+  {
+    "stationid": "3",
+    "stationname": "TIAN‘ANMENDONG",
+    "count": "459286",
+    "站点中文名": "天安门东",
+    "刷卡排名": "184"
+  },
+  {
+    "stationid": "4",
+    "stationname": "TIAN’ANMENXI",
+    "count": "258279",
+    "站点中文名": "天安门西",
+    "刷卡排名": "249"
+  },
+  {
+    "stationid": "5",
+    "stationname": "YONG‘ANLI",
+    "count": "907009",
+    "站点中文名": "永安里",
+    "刷卡排名": "63"
+  },
+  {
+    "stationid": "6",
+    "stationname": "WANSHOU LU",
+    "count": "599139",
+    "站点中文名": "万寿路",
+    "刷卡排名": "141"
+  },
+  {
+    "stationid": "7",
+    "stationname": "BAJIAO YOULEYUAN",
+    "count": "726524",
+    "站点中文名": "八角游乐园",
+    "刷卡排名": "101"
+  },
+  {
+    "stationid": "8",
+    "stationname": "BABAOSHAN",
+    "count": "879347",
+    "站点中文名": "八宝山",
+    "刷卡排名": "69"
+  },
+  {
+    "stationid": "9",
+    "stationname": "YUQUAN LU",
+    "count": "851467",
+    "站点中文名": "玉泉路",
+    "刷卡排名": "71"
+  },
+  {
+    "stationid": "10",
+    "stationname": "WANGFUJING",
+    "count": "1089626",
+    "站点中文名": "王府井",
+    "刷卡排名": "35"
+  },
+  {
+    "stationid": "11",
+    "stationname": "PINGGUOYUAN",
+    "count": "795913",
+    "站点中文名": "苹果园",
+    "刷卡排名": "87"
+  },
+  {
+    "stationid": "12",
+    "stationname": "NANLISHI LU",
+    "count": "724650",
+    "站点中文名": "南礼士路",
+    "刷卡排名": "102"
+  },
+  {
+    "stationid": "13",
+    "stationname": "WUKESONG",
+    "count": "1219036",
+    "站点中文名": "五棵松",
+    "刷卡排名": "25"
+  },
+  {
+    "stationid": "14",
+    "stationname": "FUXINGMEN",
+    "count": "1028385",
+    "站点中文名": "复兴门",
+    "刷卡排名": "42"
+  },
+  {
+    "stationid": "15",
+    "stationname": "JIANGUOMEN",
+    "count": "917312",
+    "站点中文名": "建国门",
+    "刷卡排名": "61"
+  },
+  {
+    "stationid": "16",
+    "stationname": "XIDAN",
+    "count": "2001142",
+    "站点中文名": "西单",
+    "刷卡排名": "8"
+  },
+  {
+    "stationid": "17",
+    "stationname": "DONGDAN",
+    "count": "1095725",
+    "站点中文名": "东单",
+    "刷卡排名": "34"
+  },
+  {
+    "stationid": "18",
+    "stationname": "MILITARY MUSEUM",
+    "count": "740366",
+    "站点中文名": "军事博物馆",
+    "刷卡排名": "98"
+  },
+  {
+    "stationid": "19",
+    "stationname": "GUOMAO",
+    "count": "2321174",
+    "站点中文名": "国贸",
+    "刷卡排名": "4"
+  },
+  {
+    "stationid": "20",
+    "stationname": "GONGZHUFEN",
+    "count": "574370",
+    "站点中文名": "公主坟",
+    "刷卡排名": "146"
+  },
+  {
+    "stationid": "21",
+    "stationname": "DAWANG LU",
+    "count": "2221519",
+    "站点中文名": "大望路",
+    "刷卡排名": "5"
+  },
+  {
+    "stationid": "22",
+    "stationname": "SIHUIDONG",
+    "count": "1010797",
+    "站点中文名": "四惠东",
+    "刷卡排名": "45"
+  },
+  {
+    "stationid": "23",
+    "stationname": "SIHUI",
+    "count": "1086591",
+    "站点中文名": "四惠",
+    "刷卡排名": "36"
+  },
+  {
+    "stationid": "24",
+    "stationname": "ANDINGMEN",
+    "count": "527377",
+    "站点中文名": "安定门",
+    "刷卡排名": "162"
+  },
+  {
+    "stationid": "25",
+    "stationname": "HEPINGMEN",
+    "count": "413468",
+    "站点中文名": "和平门",
+    "刷卡排名": "200"
+  },
+  {
+    "stationid": "26",
+    "stationname": "DONGSI SHITIAO",
+    "count": "1029742",
+    "站点中文名": "东四十条",
+    "刷卡排名": "41"
+  },
+  {
+    "stationid": "27",
+    "stationname": "JISHUITAN",
+    "count": "1581924",
+    "站点中文名": "积水潭",
+    "刷卡排名": "17"
+  },
+  {
+    "stationid": "28",
+    "stationname": "FUCHENGMEN",
+    "count": "1193330",
+    "站点中文名": "阜成门",
+    "刷卡排名": "26"
+  },
+  {
+    "stationid": "29",
+    "stationname": "QIANMEN",
+    "count": "534328",
+    "站点中文名": "前门",
+    "刷卡排名": "161"
+  },
+  {
+    "stationid": "30",
+    "stationname": "ZHANGCHUN JIE",
+    "count": "960915",
+    "站点中文名": "长椿街",
+    "刷卡排名": "52"
+  },
+  {
+    "stationid": "31",
+    "stationname": "BEIJING RAILWAY STATION",
+    "count": "1878410",
+    "站点中文名": "北京站",
+    "刷卡排名": "10"
+  },
+  {
+    "stationid": "32",
+    "stationname": "XUANWUMEN",
+    "count": "729505",
+    "站点中文名": "宣武门",
+    "刷卡排名": "100"
+  },
+  {
+    "stationid": "33",
+    "stationname": "XIZHIMEN",
+    "count": "2073608",
+    "站点中文名": "西直门",
+    "刷卡排名": "7"
+  },
+  {
+    "stationid": "34",
+    "stationname": "LAMA TEMPLE",
+    "count": "902968",
+    "站点中文名": "雍和宫",
+    "刷卡排名": "64"
+  },
+  {
+    "stationid": "35",
+    "stationname": "CHONGWENMEN",
+    "count": "1605877",
+    "站点中文名": "崇文门",
+    "刷卡排名": "15"
+  },
+  {
+    "stationid": "36",
+    "stationname": "CHAOYANGMEN",
+    "count": "1980342",
+    "站点中文名": "朝阳门",
+    "刷卡排名": "9"
+  },
+  {
+    "stationid": "37",
+    "stationname": "CHEGONGZHUANG",
+    "count": "804516",
+    "站点中文名": "车公庄",
+    "刷卡排名": "83"
+  },
+  {
+    "stationid": "38",
+    "stationname": "GULOUDAJIE",
+    "count": "606336",
+    "站点中文名": "鼓楼大街",
+    "刷卡排名": "136"
+  },
+  {
+    "stationid": "39",
+    "stationname": "DONGZHIMEN",
+    "count": "2476328",
+    "站点中文名": "东直门",
+    "刷卡排名": "3"
+  },
+  {
+    "stationid": "40",
+    "stationname": "ZAOYUAN",
+    "count": "611669",
+    "站点中文名": "枣园",
+    "刷卡排名": "134"
+  },
+  {
+    "stationid": "41",
+    "stationname": "SHENGWU YIYAO JIDI",
+    "count": "520172",
+    "站点中文名": "生物医药基地",
+    "刷卡排名": "165"
+  },
+  {
+    "stationid": "42",
+    "stationname": "HUANGCUN RAILWAY STATION",
+    "count": "379061",
+    "站点中文名": "黄村火车站",
+    "刷卡排名": "212"
+  },
+  {
+    "stationid": "43",
+    "stationname": "QINGYUAN LU",
+    "count": "505429",
+    "站点中文名": "清源路",
+    "刷卡排名": "171"
+  },
+  {
+    "stationid": "44",
+    "stationname": "LINGJING HUTONG",
+    "count": "636911",
+    "站点中文名": "灵境胡同",
+    "刷卡排名": "126"
+  },
+  {
+    "stationid": "45",
+    "stationname": "TIANGONGYUAN",
+    "count": "834820",
+    "站点中文名": "天宫院",
+    "刷卡排名": "76"
+  },
+  {
+    "stationid": "46",
+    "stationname": "RENMIN UNIVERSITY",
+    "count": "916434",
+    "站点中文名": "人民大学",
+    "刷卡排名": "62"
+  },
+  {
+    "stationid": "47",
+    "stationname": "XINJIEKOU",
+    "count": "468432",
+    "站点中文名": "新街口",
+    "刷卡排名": "180"
+  },
+  {
+    "stationid": "48",
+    "stationname": "GONGYI XIQIAO",
+    "count": "655019",
+    "站点中文名": "公益西桥",
+    "刷卡排名": "116"
+  },
+  {
+    "stationid": "49",
+    "stationname": "MAJIAPU",
+    "count": "473001",
+    "站点中文名": "马家堡",
+    "刷卡排名": "179"
+  },
+  {
+    "stationid": "50",
+    "stationname": "ZHONGGUANCUN",
+    "count": "998665",
+    "站点中文名": "中关村",
+    "刷卡排名": "47"
+  },
+  {
+    "stationid": "51",
+    "stationname": "GAOMIDIANBEI",
+    "count": "383174",
+    "站点中文名": "高米店北",
+    "刷卡排名": "209"
+  },
+  {
+    "stationid": "52",
+    "stationname": "TAORANTING",
+    "count": "822897",
+    "站点中文名": "陶然亭",
+    "刷卡排名": "79"
+  },
+  {
+    "stationid": "53",
+    "stationname": "XIHONGMEN",
+    "count": "1126880",
+    "站点中文名": "西红门",
+    "刷卡排名": "31"
+  },
+  {
+    "stationid": "54",
+    "stationname": "HUANGCUN XIDAJIE",
+    "count": "635788",
+    "站点中文名": "黄村西大街",
+    "刷卡排名": "128"
+  },
+  {
+    "stationid": "55",
+    "stationname": "ANHEQIAO NORTH",
+    "count": "388552",
+    "站点中文名": "安河桥北",
+    "刷卡排名": "205"
+  },
+  {
+    "stationid": "56",
+    "stationname": "XISI",
+    "count": "461304",
+    "站点中文名": "西四",
+    "刷卡排名": "183"
+  },
+  {
+    "stationid": "57",
+    "stationname": "YUANMINGYUAN PARK",
+    "count": "384262",
+    "站点中文名": "圆明园",
+    "刷卡排名": "208"
+  },
+  {
+    "stationid": "58",
+    "stationname": "PEKING UNIVERSITY EAST GATE",
+    "count": "497290",
+    "站点中文名": "北京大学东门",
+    "刷卡排名": "174"
+  },
+  {
+    "stationid": "59",
+    "stationname": "BEIJING ZOO",
+    "count": "599992",
+    "站点中文名": "动物园",
+    "刷卡排名": "140"
+  },
+  {
+    "stationid": "60",
+    "stationname": "XINGONG",
+    "count": "1040420",
+    "站点中文名": "新宫",
+    "刷卡排名": "40"
+  },
+  {
+    "stationid": "61",
+    "stationname": "BEIGONGMEN",
+    "count": "601062",
+    "站点中文名": "北宫门",
+    "刷卡排名": "138"
+  },
+  {
+    "stationid": "62",
+    "stationname": "YIHEZHUANG",
+    "count": "248603",
+    "站点中文名": "义和庄",
+    "刷卡排名": "252"
+  },
+  {
+    "stationid": "63",
+    "stationname": "GAOMIDIANNAN",
+    "count": "419320",
+    "站点中文名": "高米店南",
+    "刷卡排名": "196"
+  },
+  {
+    "stationid": "64",
+    "stationname": "WEIGONGCUN",
+    "count": "799130",
+    "站点中文名": "魏公村",
+    "刷卡排名": "85"
+  },
+  {
+    "stationid": "65",
+    "stationname": "PING‘ANLI",
+    "count": "676847",
+    "站点中文名": "平安里",
+    "刷卡排名": "112"
+  },
+  {
+    "stationid": "66",
+    "stationname": "CAISHIKOU",
+    "count": "537678",
+    "站点中文名": "菜市口",
+    "刷卡排名": "159"
+  },
+  {
+    "stationid": "67",
+    "stationname": "NATIONAL LIBRARY",
+    "count": "706429",
+    "站点中文名": "国家图书馆",
+    "刷卡排名": "105"
+  },
+  {
+    "stationid": "68",
+    "stationname": "HAIDIANHUANGZHUANG",
+    "count": "1586578",
+    "站点中文名": "海淀黄庄",
+    "刷卡排名": "16"
+  },
+  {
+    "stationid": "69",
+    "stationname": "JIAOMEN WEST",
+    "count": "848278",
+    "站点中文名": "角门西",
+    "刷卡排名": "73"
+  },
+  {
+    "stationid": "70",
+    "stationname": "BEIJING SOUTH RAILWAY STATION",
+    "count": "2861539",
+    "站点中文名": "北京南站",
+    "刷卡排名": "1"
+  },
+  {
+    "stationid": "71",
+    "stationname": "XIYUAN",
+    "count": "524799",
+    "站点中文名": "西苑",
+    "刷卡排名": "164"
+  },
+  {
+    "stationid": "72",
+    "stationname": "LIUJIAYAO",
+    "count": "788531",
+    "站点中文名": "刘家窑",
+    "刷卡排名": "90"
+  },
+  {
+    "stationid": "73",
+    "stationname": "LISHUIQIAO SOUTH",
+    "count": "766412",
+    "站点中文名": "立水桥南",
+    "刷卡排名": "95"
+  },
+  {
+    "stationid": "74",
+    "stationname": "TEMPLE OF HEAVEN EAST GATE",
+    "count": "573163",
+    "站点中文名": "天坛东门",
+    "刷卡排名": "147"
+  },
+  {
+    "stationid": "75",
+    "stationname": "TIANTONGYUAN NORTH",
+    "count": "1816455",
+    "站点中文名": "天通苑北",
+    "刷卡排名": "11"
+  },
+  {
+    "stationid": "76",
+    "stationname": "BEIXINQIAO",
+    "count": "543072",
+    "站点中文名": "北新桥",
+    "刷卡排名": "156"
+  },
+  {
+    "stationid": "77",
+    "stationname": "TIANTONGYUAN SOUTH",
+    "count": "587295",
+    "站点中文名": "天通苑南",
+    "刷卡排名": "145"
+  },
+  {
+    "stationid": "78",
+    "stationname": "HEPINGLI BEIJIE",
+    "count": "622405",
+    "站点中文名": "和平里北街",
+    "刷卡排名": "131"
+  },
+  {
+    "stationid": "79",
+    "stationname": "HEPING XIQIAO",
+    "count": "691760",
+    "站点中文名": "和平西桥",
+    "刷卡排名": "107"
+  },
+  {
+    "stationid": "80",
+    "stationname": "BEIYUANLU NORTH",
+    "count": "925022",
+    "站点中文名": "北苑路北",
+    "刷卡排名": "59"
+  },
+  {
+    "stationid": "81",
+    "stationname": "ZHANGZIZHONG LU",
+    "count": "354832",
+    "站点中文名": "张自忠路",
+    "刷卡排名": "216"
+  },
+  {
+    "stationid": "82",
+    "stationname": "DENGSHIKOU",
+    "count": "807277",
+    "站点中文名": "灯市口",
+    "刷卡排名": "81"
+  },
+  {
+    "stationid": "83",
+    "stationname": "TIANTONGYUAN",
+    "count": "1435399",
+    "站点中文名": "天通苑",
+    "刷卡排名": "19"
+  },
+  {
+    "stationid": "84",
+    "stationname": "HUIXIN XIJIE BEIKOU",
+    "count": "979920",
+    "站点中文名": "惠新西街北口",
+    "刷卡排名": "51"
+  },
+  {
+    "stationid": "85",
+    "stationname": "DONGSI",
+    "count": "689928",
+    "站点中文名": "东四",
+    "刷卡排名": "108"
+  },
+  {
+    "stationid": "86",
+    "stationname": "CIQIKOU",
+    "count": "619659",
+    "站点中文名": "磁器口",
+    "刷卡排名": "132"
+  },
+  {
+    "stationid": "87",
+    "stationname": "HUIXIN XIJIE NANKOU",
+    "count": "757704",
+    "站点中文名": "惠新西街南口",
+    "刷卡排名": "96"
+  },
+  {
+    "stationid": "88",
+    "stationname": "SONGJIAZHUANG",
+    "count": "1707810",
+    "站点中文名": "宋家庄",
+    "刷卡排名": "12"
+  },
+  {
+    "stationid": "89",
+    "stationname": "LISHUIQIAO",
+    "count": "1133987",
+    "站点中文名": "立水桥南",
+    "刷卡排名": "30"
+  },
+  {
+    "stationid": "90",
+    "stationname": "PUHUANGYU",
+    "count": "824528",
+    "站点中文名": "蒲黄榆",
+    "刷卡排名": "78"
+  },
+  {
+    "stationid": "91",
+    "stationname": "DATUNLUDONG",
+    "count": "740034",
+    "站点中文名": "大屯路东",
+    "刷卡排名": "99"
+  },
+  {
+    "stationid": "92",
+    "stationname": "CAOFANG",
+    "count": "993366",
+    "站点中文名": "草房",
+    "刷卡排名": "48"
+  },
+  {
+    "stationid": "93",
+    "stationname": "LUCHENG",
+    "count": "482678",
+    "站点中文名": "潞城",
+    "刷卡排名": "176"
+  },
+  {
+    "stationid": "94",
+    "stationname": "DONGXIAYUAN",
+    "count": "230662",
+    "站点中文名": "东夏园",
+    "刷卡排名": "263"
+  },
+  {
+    "stationid": "95",
+    "stationname": "DONGDAQIAO",
+    "count": "1305443",
+    "站点中文名": "东大桥",
+    "刷卡排名": "23"
+  },
+  {
+    "stationid": "96",
+    "stationname": "QINGNIAN LU",
+    "count": "1654918",
+    "站点中文名": "青年路",
+    "刷卡排名": "13"
+  },
+  {
+    "stationid": "97",
+    "stationname": "BEIHAIBEI",
+    "count": "553228",
+    "站点中文名": "北海北",
+    "刷卡排名": "152"
+  },
+  {
+    "stationid": "98",
+    "stationname": "BEIYUNHEDONG",
+    "count": "24698",
+    "站点中文名": "北运河东",
+    "刷卡排名": "326"
+  },
+  {
+    "stationid": "99",
+    "stationname": "BEIYUNHEXI",
+    "count": "712573",
+    "站点中文名": "北运河西",
+    "刷卡排名": "103"
+  },
+  {
+    "stationid": "100",
+    "stationname": "SHILIPU",
+    "count": "891263",
+    "站点中文名": "十里堡",
+    "刷卡排名": "65"
+  },
+  {
+    "stationid": "101",
+    "stationname": "HAOJIAFU",
+    "count": "105417",
+    "站点中文名": "郝家府",
+    "刷卡排名": "302"
+  },
+  {
+    "stationid": "102",
+    "stationname": "TONGZHOU BEIGUAN",
+    "count": "747763",
+    "站点中文名": "通州北关",
+    "刷卡排名": "97"
+  },
+  {
+    "stationid": "103",
+    "stationname": "CHEGONGZHUANGXI",
+    "count": "511936",
+    "站点中文名": "车公庄西",
+    "刷卡排名": "170"
+  },
+  {
+    "stationid": "104",
+    "stationname": "HUANGQU",
+    "count": "646052",
+    "站点中文名": "黄渠",
+    "刷卡排名": "121"
+  },
+  {
+    "stationid": "105",
+    "stationname": "XIHUANGCUN",
+    "count": "311745",
+    "站点中文名": "西黄村",
+    "刷卡排名": "233"
+  },
+  {
+    "stationid": "106",
+    "stationname": "DALIANPO",
+    "count": "623385",
+    "站点中文名": "褡裢坡",
+    "刷卡排名": "130"
+  },
+  {
+    "stationid": "107",
+    "stationname": "CHANGYING",
+    "count": "1170157",
+    "站点中文名": "常营",
+    "刷卡排名": "28"
+  },
+  {
+    "stationid": "108",
+    "stationname": "LIAOGONGZHUANG",
+    "count": "162912",
+    "站点中文名": "廖公庄",
+    "刷卡排名": "284"
+  },
+  {
+    "stationid": "109",
+    "stationname": "HUAYUANQIAO",
+    "count": "643379",
+    "站点中文名": "花园桥",
+    "刷卡排名": "124"
+  },
+  {
+    "stationid": "110",
+    "stationname": "YANGZHUANG",
+    "count": "442520",
+    "站点中文名": "杨庄",
+    "刷卡排名": "189"
+  },
+  {
+    "stationid": "111",
+    "stationname": "TIANCUN",
+    "count": "423343",
+    "站点中文名": "田村",
+    "刷卡排名": "194"
+  },
+  {
+    "stationid": "112",
+    "stationname": "WUZI XUEYUAN LU",
+    "count": "955173",
+    "站点中文名": "物资学院路",
+    "刷卡排名": "54"
+  },
+  {
+    "stationid": "113",
+    "stationname": "HAIDIAN WULUJU",
+    "count": "890019",
+    "站点中文名": "海淀五路居",
+    "刷卡排名": "66"
+  },
+  {
+    "stationid": "114",
+    "stationname": "NANLUOGU XIANG",
+    "count": "806227",
+    "站点中文名": "南锣鼓巷",
+    "刷卡排名": "82"
+  },
+  {
+    "stationid": "115",
+    "stationname": "BAISHIQIAONAN",
+    "count": "825294",
+    "站点中文名": "白石桥南",
+    "刷卡排名": "77"
+  },
+  {
+    "stationid": "116",
+    "stationname": "CISHOUSI",
+    "count": "412393",
+    "站点中文名": "慈寿寺",
+    "刷卡排名": "202"
+  },
+  {
+    "stationid": "117",
+    "stationname": "HUJIALOU",
+    "count": "982307",
+    "站点中文名": "呼家楼",
+    "刷卡排名": "50"
+  },
+  {
+    "stationid": "118",
+    "stationname": "JINTAI LU",
+    "count": "849370",
+    "站点中文名": "金台路",
+    "刷卡排名": "72"
+  },
+  {
+    "stationid": "119",
+    "stationname": "JIN’ANQIAO",
+    "count": "566080",
+    "站点中文名": "金安桥",
+    "刷卡排名": "150"
+  },
+  {
+    "stationid": "120",
+    "stationname": "JIAOHUACHANG",
+    "count": "133686",
+    "站点中文名": "焦化厂",
+    "刷卡排名": "293"
+  },
+  {
+    "stationid": "121",
+    "stationname": "SHUANGHE",
+    "count": "333202",
+    "站点中文名": "双合",
+    "刷卡排名": "222"
+  },
+  {
+    "stationid": "122",
+    "stationname": "GUANGQUMENWAI",
+    "count": "453083",
+    "站点中文名": "广渠门外",
+    "刷卡排名": "185"
+  },
+  {
+    "stationid": "126",
+    "stationname": "HAPPY VALLEY",
+    "count": "355648",
+    "站点中文名": "欢乐谷景区",
+    "刷卡排名": "215"
+  },
+  {
+    "stationid": "127",
+    "stationname": "WANZI",
+    "count": "548004",
+    "站点中文名": "湾子",
+    "刷卡排名": "154"
+  },
+  {
+    "stationid": "129",
+    "stationname": "HUAGONG",
+    "count": "89402",
+    "站点中文名": "化工",
+    "刷卡排名": "307"
+  },
+  {
+    "stationid": "130",
+    "stationname": "DAGUANYING",
+    "count": "708762",
+    "站点中文名": "达官营",
+    "刷卡排名": "104"
+  },
+  {
+    "stationid": "131",
+    "stationname": "DAJIAOTING",
+    "count": "354194",
+    "站点中文名": "大郊亭",
+    "刷卡排名": "217"
+  },
+  {
+    "stationid": "133",
+    "stationname": "HUFANGQIAO",
+    "count": "304991",
+    "站点中文名": "虎坊桥",
+    "刷卡排名": "236"
+  },
+  {
+    "stationid": "134",
+    "stationname": "FATOU",
+    "count": "321601",
+    "站点中文名": "垡头",
+    "刷卡排名": "229"
+  },
+  {
+    "stationid": "136",
+    "stationname": "NANLOUZIZHUANG",
+    "count": "302539",
+    "站点中文名": "南楼梓庄",
+    "刷卡排名": "240"
+  },
+  {
+    "stationid": "138",
+    "stationname": "GUANG'ANMENNEI",
+    "count": "857418",
+    "站点中文名": "广安门内",
+    "刷卡排名": "70"
+  },
+  {
+    "stationid": "139",
+    "stationname": "GUANGQUMENNEI",
+    "count": "596459",
+    "站点中文名": "广渠门内",
+    "刷卡排名": "143"
+  },
+  {
+    "stationid": "140",
+    "stationname": "BAIZIWAN",
+    "count": "643891",
+    "站点中文名": "百子湾",
+    "刷卡排名": "123"
+  },
+  {
+    "stationid": "141",
+    "stationname": "QIAOWAN",
+    "count": "241896",
+    "站点中文名": "桥湾",
+    "刷卡排名": "257"
+  },
+  {
+    "stationid": "142",
+    "stationname": "ZHUSHIKOU",
+    "count": "333090",
+    "站点中文名": "珠市口",
+    "刷卡排名": "223"
+  },
+  {
+    "stationid": "143",
+    "stationname": "BEIJING WEST RAILWAY STATION",
+    "count": "2620155",
+    "站点中文名": "北京西站",
+    "刷卡排名": "2"
+  },
+  {
+    "stationid": "144",
+    "stationname": "SHUANGJING",
+    "count": "1102231",
+    "站点中文名": "双井",
+    "刷卡排名": "33"
+  },
+  {
+    "stationid": "145",
+    "stationname": "JIULONGSHAN",
+    "count": "956302",
+    "站点中文名": "九龙山",
+    "刷卡排名": "53"
+  },
+  {
+    "stationid": "147",
+    "stationname": "DEMAO",
+    "count": "75653",
+    "站点中文名": "德茂",
+    "刷卡排名": "311"
+  },
+  {
+    "stationid": "148",
+    "stationname": "MUXIYUAN",
+    "count": "212768",
+    "站点中文名": "木樨园",
+    "刷卡排名": "268"
+  },
+  {
+    "stationid": "149",
+    "stationname": "DAHONGMENNAN",
+    "count": "50093",
+    "站点中文名": "大红门南",
+    "刷卡排名": "320"
+  },
+  {
+    "stationid": "150",
+    "stationname": "TIANQIAO",
+    "count": "176273",
+    "站点中文名": "天桥",
+    "刷卡排名": "280"
+  },
+  {
+    "stationid": "151",
+    "stationname": "HEYI",
+    "count": "163678",
+    "站点中文名": "和义",
+    "刷卡排名": "283"
+  },
+  {
+    "stationid": "152",
+    "stationname": "HAIHUTUN",
+    "count": "122625",
+    "站点中文名": "海户屯",
+    "刷卡排名": "297"
+  },
+  {
+    "stationid": "153",
+    "stationname": "HUOJIAN WANYUAN",
+    "count": "118524",
+    "站点中文名": "火箭万源",
+    "刷卡排名": "299"
+  },
+  {
+    "stationid": "154",
+    "stationname": "WUFUTANG",
+    "count": "95042",
+    "站点中文名": "五福堂",
+    "刷卡排名": "306"
+  },
+  {
+    "stationid": "155",
+    "stationname": "YINGHAI",
+    "count": "184243",
+    "站点中文名": "瀛海",
+    "刷卡排名": "276"
+  },
+  {
+    "stationid": "156",
+    "stationname": "DONGGAODI",
+    "count": "69637",
+    "站点中文名": "东高地",
+    "刷卡排名": "312"
+  },
+  {
+    "stationid": "157",
+    "stationname": "YONGDINGMENWAI",
+    "count": "324076",
+    "站点中文名": "永定门外",
+    "刷卡排名": "227"
+  },
+  {
+    "stationid": "158",
+    "stationname": "HUILONGGUAN DONGDAJIE",
+    "count": "844398",
+    "站点中文名": "回龙观东大街",
+    "刷卡排名": "74"
+  },
+  {
+    "stationid": "159",
+    "stationname": "NATIONAL ART MUSEUM",
+    "count": "237843",
+    "站点中文名": "中国美术馆",
+    "刷卡排名": "260"
+  },
+  {
+    "stationid": "160",
+    "stationname": "OLYMPIC SPORTS CENTER",
+    "count": "263059",
+    "站点中文名": "奥体中心",
+    "刷卡排名": "248"
+  },
+  {
+    "stationid": "161",
+    "stationname": "LINCUIQIAO",
+    "count": "297460",
+    "站点中文名": "林萃桥",
+    "刷卡排名": "242"
+  },
+  {
+    "stationid": "162",
+    "stationname": "XIXIAOKOU",
+    "count": "398984",
+    "站点中文名": "西小口",
+    "刷卡排名": "204"
+  },
+  {
+    "stationid": "163",
+    "stationname": "YONGTAIZHUANG",
+    "count": "639313",
+    "站点中文名": "永泰庄",
+    "刷卡排名": "125"
+  },
+  {
+    "stationid": "164",
+    "stationname": "FOREST PARK SOUTH GATE",
+    "count": "302522",
+    "站点中文名": "森林公园南门",
+    "刷卡排名": "241"
+  },
+  {
+    "stationid": "165",
+    "stationname": "ANHUAQIAO",
+    "count": "480783",
+    "站点中文名": "安华桥",
+    "刷卡排名": "177"
+  },
+  {
+    "stationid": "166",
+    "stationname": "ANDELIBEIJIE",
+    "count": "207036",
+    "站点中文名": "安德里北街",
+    "刷卡排名": "271"
+  },
+  {
+    "stationid": "167",
+    "stationname": "PINGXIFU",
+    "count": "437924",
+    "站点中文名": "平西府",
+    "刷卡排名": "191"
+  },
+  {
+    "stationid": "168",
+    "stationname": "SHENSHAHAI",
+    "count": "304705",
+    "站点中文名": "什刹海",
+    "刷卡排名": "237"
+  },
+  {
+    "stationid": "169",
+    "stationname": "YUZHILU",
+    "count": "240668",
+    "站点中文名": "育知路",
+    "刷卡排名": "258"
+  },
+  {
+    "stationid": "170",
+    "stationname": "YUXIN",
+    "count": "698265",
+    "站点中文名": "育新",
+    "刷卡排名": "106"
+  },
+  {
+    "stationid": "171",
+    "stationname": "BEITUCHENG",
+    "count": "418307",
+    "站点中文名": "北土城",
+    "刷卡排名": "197"
+  },
+  {
+    "stationid": "172",
+    "stationname": "HUOYING",
+    "count": "1339899",
+    "站点中文名": "霍营",
+    "刷卡排名": "20"
+  },
+  {
+    "stationid": "173",
+    "stationname": "OLYMPIC PARK",
+    "count": "689252",
+    "站点中文名": "奥林匹克公园",
+    "刷卡排名": "109"
+  },
+  {
+    "stationid": "174",
+    "stationname": "ZHUXINZHUANG",
+    "count": "835481",
+    "站点中文名": "朱辛庄",
+    "刷卡排名": "75"
+  },
+  {
+    "stationid": "175",
+    "stationname": "BAIDUIZI",
+    "count": "512540",
+    "站点中文名": "白堆子",
+    "刷卡排名": "168"
+  },
+  {
+    "stationid": "176",
+    "stationname": "KEYILU",
+    "count": "381641",
+    "站点中文名": "科怡路",
+    "刷卡排名": "210"
+  },
+  {
+    "stationid": "177",
+    "stationname": "LIULIQIAODONG",
+    "count": "1050506",
+    "站点中文名": "六里桥东",
+    "刷卡排名": "39"
+  },
+  {
+    "stationid": "178",
+    "stationname": "FENGTAI NANLU",
+    "count": "426002",
+    "站点中文名": "丰台南路",
+    "刷卡排名": "193"
+  },
+  {
+    "stationid": "179",
+    "stationname": "FENGTAI KEJIYUAN",
+    "count": "983967",
+    "站点中文名": "丰台科技园",
+    "刷卡排名": "49"
+  },
+  {
+    "stationid": "180",
+    "stationname": "FENGTAI DONGDAJIE",
+    "count": "274149",
+    "站点中文名": "丰台东大街",
+    "刷卡排名": "247"
+  },
+  {
+    "stationid": "181",
+    "stationname": "LIULIQIAO",
+    "count": "683910",
+    "站点中文名": "六里桥",
+    "刷卡排名": "111"
+  },
+  {
+    "stationid": "182",
+    "stationname": "QILIZHUANG",
+    "count": "549568",
+    "站点中文名": "七里庄",
+    "刷卡排名": "153"
+  },
+  {
+    "stationid": "183",
+    "stationname": "GUOGONGZHUANG",
+    "count": "313182",
+    "站点中文名": "郭公庄",
+    "刷卡排名": "232"
+  },
+  {
+    "stationid": "184",
+    "stationname": "XIDIAOYUTAI",
+    "count": "618790",
+    "站点中文名": "西钓鱼台",
+    "刷卡排名": "133"
+  },
+  {
+    "stationid": "185",
+    "stationname": "DAHONGMEN",
+    "count": "513294",
+    "站点中文名": "大红门",
+    "刷卡排名": "167"
+  },
+  {
+    "stationid": "186",
+    "stationname": "JINTAIXIZHAO",
+    "count": "930929",
+    "站点中文名": "金台夕照",
+    "刷卡排名": "58"
+  },
+  {
+    "stationid": "187",
+    "stationname": "CHANGCHUNQIAO",
+    "count": "655404",
+    "站点中文名": "长春桥",
+    "刷卡排名": "115"
+  },
+  {
+    "stationid": "188",
+    "stationname": "TAIYANGGONG",
+    "count": "797530",
+    "站点中文名": "太阳宫",
+    "刷卡排名": "86"
+  },
+  {
+    "stationid": "189",
+    "stationname": "XITUCHENG",
+    "count": "1069425",
+    "站点中文名": "西土城",
+    "刷卡排名": "37"
+  },
+  {
+    "stationid": "190",
+    "stationname": "ANZHENMEN",
+    "count": "780433",
+    "站点中文名": "安贞门",
+    "刷卡排名": "92"
+  },
+  {
+    "stationid": "191",
+    "stationname": "JINGSONG",
+    "count": "1014575",
+    "站点中文名": "劲松",
+    "刷卡排名": "43"
+  },
+  {
+    "stationid": "192",
+    "stationname": "FENZHONGSI",
+    "count": "148445",
+    "站点中文名": "分钟寺",
+    "刷卡排名": "289"
+  },
+  {
+    "stationid": "193",
+    "stationname": "ALGRICULTURAL EXHIBITION CENTER",
+    "count": "217224",
+    "站点中文名": "农业展览馆",
+    "刷卡排名": "265"
+  },
+  {
+    "stationid": "194",
+    "stationname": "NIWA",
+    "count": "350070",
+    "站点中文名": "泥洼",
+    "刷卡排名": "218"
+  },
+  {
+    "stationid": "195",
+    "stationname": "LIANHUAQIAO",
+    "count": "303681",
+    "站点中文名": "莲花桥",
+    "刷卡排名": "238"
+  },
+  {
+    "stationid": "196",
+    "stationname": "JIANDEMEN",
+    "count": "788846",
+    "站点中文名": "健德门",
+    "刷卡排名": "89"
+  },
+  {
+    "stationid": "197",
+    "stationname": "CAPITAL UNIVERSITY OF ECONOMICS & BUSINESS",
+    "count": "607393",
+    "站点中文名": "首经贸",
+    "刷卡排名": "135"
+  },
+  {
+    "stationid": "198",
+    "stationname": "LIANGMAQIAO",
+    "count": "1192899",
+    "站点中文名": "亮马桥",
+    "刷卡排名": "27"
+  },
+  {
+    "stationid": "199",
+    "stationname": "CHENGSHOUSI",
+    "count": "630233",
+    "站点中文名": "成寿寺",
+    "刷卡排名": "129"
+  },
+  {
+    "stationid": "200",
+    "stationname": "SUZHOU JIE",
+    "count": "1116811",
+    "站点中文名": "苏州街",
+    "刷卡排名": "32"
+  },
+  {
+    "stationid": "201",
+    "stationname": "JIJIAMIAO",
+    "count": "200727",
+    "站点中文名": "纪家庙",
+    "刷卡排名": "274"
+  },
+  {
+    "stationid": "202",
+    "stationname": "FENGTAI RAILWAY STATION",
+    "count": "325622",
+    "站点中文名": "丰台站",
+    "刷卡排名": "225"
+  },
+  {
+    "stationid": "203",
+    "stationname": "PANJIAYUAN",
+    "count": "886854",
+    "站点中文名": "潘家园",
+    "刷卡排名": "67"
+  },
+  {
+    "stationid": "204",
+    "stationname": "SHILIUZHUANG",
+    "count": "537311",
+    "站点中文名": "石榴庄",
+    "刷卡排名": "160"
+  },
+  {
+    "stationid": "205",
+    "stationname": "ZHICHUNLI",
+    "count": "512112",
+    "站点中文名": "知春里",
+    "刷卡排名": "169"
+  },
+  {
+    "stationid": "206",
+    "stationname": "MUDANYUAN",
+    "count": "948049",
+    "站点中文名": "牡丹园",
+    "刷卡排名": "57"
+  },
+  {
+    "stationid": "207",
+    "stationname": "HUOQIYING",
+    "count": "248499",
+    "站点中文名": "火器营",
+    "刷卡排名": "253"
+  },
+  {
+    "stationid": "208",
+    "stationname": "TUANJIEHU",
+    "count": "1318394",
+    "站点中文名": "团结湖",
+    "刷卡排名": "21"
+  },
+  {
+    "stationid": "209",
+    "stationname": "CHEDAOGOU",
+    "count": "541092",
+    "站点中文名": "车道沟",
+    "刷卡排名": "157"
+  },
+  {
+    "stationid": "210",
+    "stationname": "JIAOMEN EAST",
+    "count": "789599",
+    "站点中文名": "角门东",
+    "刷卡排名": "88"
+  },
+  {
+    "stationid": "211",
+    "stationname": "SHAOYAOJU",
+    "count": "949274",
+    "站点中文名": "芍药居",
+    "刷卡排名": "55"
+  },
+  {
+    "stationid": "212",
+    "stationname": "ZHICHUNLU",
+    "count": "948499",
+    "站点中文名": "知春路",
+    "刷卡排名": "56"
+  },
+  {
+    "stationid": "213",
+    "stationname": "SHILIHE",
+    "count": "1634345",
+    "站点中文名": "十里河",
+    "刷卡排名": "14"
+  },
+  {
+    "stationid": "214",
+    "stationname": "XIJU",
+    "count": "570357",
+    "站点中文名": "西局",
+    "刷卡排名": "148"
+  },
+  {
+    "stationid": "215",
+    "stationname": "CAOQIAO",
+    "count": "452635",
+    "站点中文名": "草桥",
+    "刷卡排名": "186"
+  },
+  {
+    "stationid": "216",
+    "stationname": "SANYUANQIAO",
+    "count": "1567626",
+    "站点中文名": "三元桥",
+    "刷卡排名": "18"
+  },
+  {
+    "stationid": "217",
+    "stationname": "BAGOU",
+    "count": "918381",
+    "站点中文名": "巴沟",
+    "刷卡排名": "60"
+  },
+  {
+    "stationid": "218",
+    "stationname": "LONGZE",
+    "count": "1002120",
+    "站点中文名": "龙泽",
+    "刷卡排名": "46"
+  },
+  {
+    "stationid": "219",
+    "stationname": "SHANGDI",
+    "count": "1012932",
+    "站点中文名": "上地",
+    "刷卡排名": "44"
+  },
+  {
+    "stationid": "220",
+    "stationname": "WUDAOKOU",
+    "count": "1312510",
+    "站点中文名": "五道口",
+    "刷卡排名": "22"
+  },
+  {
+    "stationid": "221",
+    "stationname": "GUANGXIMEN",
+    "count": "386104",
+    "站点中文名": "光熙门",
+    "刷卡排名": "206"
+  },
+  {
+    "stationid": "222",
+    "stationname": "BEIYUAN",
+    "count": "636409",
+    "站点中文名": "北苑",
+    "刷卡排名": "127"
+  },
+  {
+    "stationid": "223",
+    "stationname": "HUILONGGUAN",
+    "count": "1061518",
+    "站点中文名": "回龙观",
+    "刷卡排名": "38"
+  },
+  {
+    "stationid": "224",
+    "stationname": "DAZHONGSI",
+    "count": "589688",
+    "站点中文名": "大钟寺",
+    "刷卡排名": "144"
+  },
+  {
+    "stationid": "225",
+    "stationname": "LIUFANG",
+    "count": "466021",
+    "站点中文名": "柳芳",
+    "刷卡排名": "181"
+  },
+  {
+    "stationid": "227",
+    "stationname": "WANGJINGXI",
+    "count": "768673",
+    "站点中文名": "望京西",
+    "刷卡排名": "94"
+  },
+  {
+    "stationid": "228",
+    "stationname": "XI'ERQI",
+    "count": "2174467",
+    "站点中文名": "西二旗",
+    "刷卡排名": "6"
+  },
+  {
+    "stationid": "229",
+    "stationname": "JIANGTAI",
+    "count": "1265415",
+    "站点中文名": "将台",
+    "刷卡排名": "24"
+  },
+  {
+    "stationid": "230",
+    "stationname": "PINGLEYUAN",
+    "count": "384711",
+    "站点中文名": "平乐园",
+    "刷卡排名": "207"
+  },
+  {
+    "stationid": "231",
+    "stationname": "DONGHUQU",
+    "count": "500945",
+    "站点中文名": "东湖渠",
+    "刷卡排名": "173"
+  },
+  {
+    "stationid": "232",
+    "stationname": "ZAOYING",
+    "count": "323272",
+    "站点中文名": "枣营",
+    "刷卡排名": "228"
+  },
+  {
+    "stationid": "233",
+    "stationname": "DONGFENG BEIQIAO",
+    "count": "330689",
+    "站点中文名": "东风北桥",
+    "刷卡排名": "224"
+  },
+  {
+    "stationid": "234",
+    "stationname": "FUTONG",
+    "count": "560112",
+    "站点中文名": "阜通",
+    "刷卡排名": "151"
+  },
+  {
+    "stationid": "235",
+    "stationname": "LAIGUANGYING",
+    "count": "605337",
+    "站点中文名": "来广营",
+    "刷卡排名": "137"
+  },
+  {
+    "stationid": "236",
+    "stationname": "CHAOYANG PARK",
+    "count": "465207",
+    "站点中文名": "朝阳公园",
+    "刷卡排名": "182"
+  },
+  {
+    "stationid": "237",
+    "stationname": "WANGJINGNAN",
+    "count": "786086",
+    "站点中文名": "望京南",
+    "刷卡排名": "91"
+  },
+  {
+    "stationid": "238",
+    "stationname": "BEIJING UNIVERSITY OF TECHNOLOGY WEST GATE",
+    "count": "545785",
+    "站点中文名": "北工大西门",
+    "刷卡排名": "155"
+  },
+  {
+    "stationid": "239",
+    "stationname": "JINGTAI",
+    "count": "289677",
+    "站点中文名": "景泰",
+    "刷卡排名": "244"
+  },
+  {
+    "stationid": "240",
+    "stationname": "SHANGEZHUANG",
+    "count": "133495",
+    "站点中文名": "善各庄",
+    "刷卡排名": "294"
+  },
+  {
+    "stationid": "241",
+    "stationname": "FANGZHUANG",
+    "count": "492811",
+    "站点中文名": "方庄",
+    "刷卡排名": "175"
+  },
+  {
+    "stationid": "242",
+    "stationname": "WANGJING",
+    "count": "799537",
+    "站点中文名": "望京",
+    "刷卡排名": "84"
+  },
+  {
+    "stationid": "243",
+    "stationname": "DAWAYAO",
+    "count": "215161",
+    "站点中文名": "大瓦窑",
+    "刷卡排名": "266"
+  },
+  {
+    "stationid": "244",
+    "stationname": "ZHANGGUOZHUANG",
+    "count": "309444",
+    "站点中文名": "张郭庄",
+    "刷卡排名": "234"
+  },
+  {
+    "stationid": "245",
+    "stationname": "GUOZHUANGZI",
+    "count": "243104",
+    "站点中文名": "郭庄子",
+    "刷卡排名": "256"
+  },
+  {
+    "stationid": "246",
+    "stationname": "GARDEN EXPO PARK",
+    "count": "139400",
+    "站点中文名": "园博园",
+    "刷卡排名": "291"
+  },
+  {
+    "stationid": "247",
+    "stationname": "DAJING",
+    "count": "187190",
+    "站点中文名": "大井",
+    "刷卡排名": "275"
+  },
+  {
+    "stationid": "248",
+    "stationname": "CHINA INTERNATIONAL EXHIBITION CENTER",
+    "count": "359920",
+    "站点中文名": "国展",
+    "刷卡排名": "214"
+  },
+  {
+    "stationid": "249",
+    "stationname": "MAQUANYING",
+    "count": "439065",
+    "站点中文名": "马泉营",
+    "刷卡排名": "190"
+  },
+  {
+    "stationid": "250",
+    "stationname": "SHUNYI",
+    "count": "771129",
+    "站点中文名": "顺义",
+    "刷卡排名": "93"
+  },
+  {
+    "stationid": "251",
+    "stationname": "FENGBO",
+    "count": "659375",
+    "站点中文名": "俸伯",
+    "刷卡排名": "114"
+  },
+  {
+    "stationid": "252",
+    "stationname": "LIUDAOKOU",
+    "count": "540079",
+    "站点中文名": "六道口",
+    "刷卡排名": "158"
+  },
+  {
+    "stationid": "253",
+    "stationname": "SHIMEN",
+    "count": "503345",
+    "站点中文名": "石门",
+    "刷卡排名": "172"
+  },
+  {
+    "stationid": "254",
+    "stationname": "ANLI LU",
+    "count": "422777",
+    "站点中文名": "安立路",
+    "刷卡排名": "195"
+  },
+  {
+    "stationid": "255",
+    "stationname": "GUANZHUANG",
+    "count": "179074",
+    "站点中文名": "关庄",
+    "刷卡排名": "277"
+  },
+  {
+    "stationid": "256",
+    "stationname": "CUIGEZHUANG",
+    "count": "162762",
+    "站点中文名": "崔各庄",
+    "刷卡排名": "285"
+  },
+  {
+    "stationid": "257",
+    "stationname": "HUALIKAN",
+    "count": "418237",
+    "站点中文名": "花梨坎",
+    "刷卡排名": "198"
+  },
+  {
+    "stationid": "258",
+    "stationname": "NANFAXIN",
+    "count": "318947",
+    "站点中文名": "南法信",
+    "刷卡排名": "231"
+  },
+  {
+    "stationid": "259",
+    "stationname": "HOUSHAYU",
+    "count": "600654",
+    "站点中文名": "后沙峪",
+    "刷卡排名": "139"
+  },
+  {
+    "stationid": "260",
+    "stationname": "WANGJINGDONG",
+    "count": "880701",
+    "站点中文名": "望京东",
+    "刷卡排名": "68"
+  },
+  {
+    "stationid": "261",
+    "stationname": "QINGHUA DONGLU XIKOU",
+    "count": "320498",
+    "站点中文名": "清华东路西口",
+    "刷卡排名": "230"
+  },
+  {
+    "stationid": "262",
+    "stationname": "BEISHATAN",
+    "count": "347047",
+    "站点中文名": "北沙滩",
+    "刷卡排名": "219"
+  },
+  {
+    "stationid": "263",
+    "stationname": "SUNHE",
+    "count": "151901",
+    "站点中文名": "孙河",
+    "刷卡排名": "288"
+  },
+  {
+    "stationid": "264",
+    "stationname": "XIBEIWANG",
+    "count": "208851",
+    "站点中文名": "西北旺",
+    "刷卡排名": "270"
+  },
+  {
+    "stationid": "265",
+    "stationname": "DAOXIANGHU LU",
+    "count": "138493",
+    "站点中文名": "稻香湖路",
+    "刷卡排名": "292"
+  },
+  {
+    "stationid": "266",
+    "stationname": "BEIANHE",
+    "count": "249694",
+    "站点中文名": "北安河",
+    "刷卡排名": "250"
+  },
+  {
+    "stationid": "267",
+    "stationname": "TUNDIAN",
+    "count": "176858",
+    "站点中文名": "屯佃",
+    "刷卡排名": "279"
+  },
+  {
+    "stationid": "268",
+    "stationname": "WENYANG LU",
+    "count": "283853",
+    "站点中文名": "温阳路",
+    "刷卡排名": "245"
+  },
+  {
+    "stationid": "269",
+    "stationname": "NONGDA NANLU",
+    "count": "212832",
+    "站点中文名": "农大南路",
+    "刷卡排名": "267"
+  },
+  {
+    "stationid": "270",
+    "stationname": "MALIANWA",
+    "count": "238722",
+    "站点中文名": "马连洼",
+    "刷卡排名": "259"
+  },
+  {
+    "stationid": "271",
+    "stationname": "YONGFENG SOUTH",
+    "count": "209181",
+    "站点中文名": "永丰南",
+    "刷卡排名": "269"
+  },
+  {
+    "stationid": "272",
+    "stationname": "YONGFENG",
+    "count": "308540",
+    "站点中文名": "永丰",
+    "刷卡排名": "235"
+  },
+  {
+    "stationid": "273",
+    "stationname": "XIAOYUAN",
+    "count": "98748",
+    "站点中文名": "小园",
+    "刷卡排名": "304"
+  },
+  {
+    "stationid": "274",
+    "stationname": "QIAOHUYING",
+    "count": "56898",
+    "站点中文名": "桥户营",
+    "刷卡排名": "317"
+  },
+  {
+    "stationid": "275",
+    "stationname": "LIYUANZHUANG",
+    "count": "43677",
+    "站点中文名": "栗园庄",
+    "刷卡排名": "322"
+  },
+  {
+    "stationid": "276",
+    "stationname": "SHICHANG",
+    "count": "96096",
+    "站点中文名": "石厂",
+    "刷卡排名": "305"
+  },
+  {
+    "stationid": "277",
+    "stationname": "SIDAOQIAO",
+    "count": "49470",
+    "站点中文名": "四道桥",
+    "刷卡排名": "321"
+  },
+  {
+    "stationid": "278",
+    "stationname": "SHANG‘AN",
+    "count": "123984",
+    "站点中文名": "上岸",
+    "刷卡排名": "296"
+  },
+  {
+    "stationid": "279",
+    "stationname": "SHUANGQIAO",
+    "count": "652539",
+    "站点中文名": "双桥",
+    "刷卡排名": "118"
+  },
+  {
+    "stationid": "280",
+    "stationname": "TONGZHOU BEIYUAN",
+    "count": "684972",
+    "站点中文名": "通州北苑",
+    "刷卡排名": "110"
+  },
+  {
+    "stationid": "281",
+    "stationname": "TUQIAO",
+    "count": "672238",
+    "站点中文名": "土桥",
+    "刷卡排名": "113"
+  },
+  {
+    "stationid": "282",
+    "stationname": "GAOBEIDIAN",
+    "count": "341309",
+    "站点中文名": "高碑店",
+    "刷卡排名": "221"
+  },
+  {
+    "stationid": "283",
+    "stationname": "COMMUNICATION UNIVERSITY OF CHINA",
+    "count": "526066",
+    "站点中文名": "传媒大学",
+    "刷卡排名": "163"
+  },
+  {
+    "stationid": "284",
+    "stationname": "BALIQIAO",
+    "count": "156241",
+    "站点中文名": "八里桥",
+    "刷卡排名": "286"
+  },
+  {
+    "stationid": "285",
+    "stationname": "LIYUAN",
+    "count": "650873",
+    "站点中文名": "梨园",
+    "刷卡排名": "120"
+  },
+  {
+    "stationid": "286",
+    "stationname": "LINHELI",
+    "count": "344971",
+    "站点中文名": "临河里",
+    "刷卡排名": "220"
+  },
+  {
+    "stationid": "287",
+    "stationname": "JIUKESHU",
+    "count": "434609",
+    "站点中文名": "九棵树",
+    "刷卡排名": "192"
+  },
+  {
+    "stationid": "288",
+    "stationname": "GUOYUAN",
+    "count": "413157",
+    "站点中文名": "果园",
+    "刷卡排名": "201"
+  },
+  {
+    "stationid": "289",
+    "stationname": "GUANZHUANG",
+    "count": "451176",
+    "站点中文名": "管庄",
+    "刷卡排名": "187"
+  },
+  {
+    "stationid": "290",
+    "stationname": "GONGHUACHENG",
+    "count": "60588",
+    "站点中文名": "巩华城",
+    "刷卡排名": "316"
+  },
+  {
+    "stationid": "291",
+    "stationname": "CHANGPING",
+    "count": "651224",
+    "站点中文名": "昌平",
+    "刷卡排名": "119"
+  },
+  {
+    "stationid": "292",
+    "stationname": "CHANGPING DONGGUAN",
+    "count": "303627",
+    "站点中文名": "昌平东关",
+    "刷卡排名": "239"
+  },
+  {
+    "stationid": "293",
+    "stationname": "CHANGPING XISHANKOU",
+    "count": "106399",
+    "站点中文名": "昌平西山口",
+    "刷卡排名": "301"
+  },
+  {
+    "stationid": "294",
+    "stationname": "NANSHAO",
+    "count": "366064",
+    "站点中文名": "南邵",
+    "刷卡排名": "213"
+  },
+  {
+    "stationid": "295",
+    "stationname": "MING TOMBS",
+    "count": "61771",
+    "站点中文名": "十三陵景区",
+    "刷卡排名": "315"
+  },
+  {
+    "stationid": "296",
+    "stationname": "BEISHAOWA",
+    "count": "110334",
+    "站点中文名": "北邵洼",
+    "刷卡排名": "300"
+  },
+  {
+    "stationid": "297",
+    "stationname": "LIFE SCIENCE PARK",
+    "count": "819869",
+    "站点中文名": "生命科学园",
+    "刷卡排名": "80"
+  },
+  {
+    "stationid": "298",
+    "stationname": "SHAHE",
+    "count": "1166287",
+    "站点中文名": "沙河",
+    "刷卡排名": "29"
+  },
+  {
+    "stationid": "299",
+    "stationname": "SHAHE UNIVERSITY PARK",
+    "count": "449671",
+    "站点中文名": "沙河高教园",
+    "刷卡排名": "188"
+  },
+  {
+    "stationid": "302",
+    "stationname": "LIANGXIANG DAXUECHENGBEI",
+    "count": "155974",
+    "站点中文名": "良乡大学城北",
+    "刷卡排名": "287"
+  },
+  {
+    "stationid": "303",
+    "stationname": "LIANGXIANG NANGUAN",
+    "count": "227918",
+    "站点中文名": "良乡南关",
+    "刷卡排名": "264"
+  },
+  {
+    "stationid": "304",
+    "stationname": "LIANGXIANG DAXUECHENG",
+    "count": "235007",
+    "站点中文名": "良乡大学城北",
+    "刷卡排名": "261"
+  },
+  {
+    "stationid": "305",
+    "stationname": "LIANGXIANG DAXUECHENGXI",
+    "count": "281675",
+    "站点中文名": "良乡大学城西",
+    "刷卡排名": "246"
+  },
+  {
+    "stationid": "306",
+    "stationname": "LIBAFANG",
+    "count": "381430",
+    "站点中文名": "篱笆房",
+    "刷卡排名": "211"
+  },
+  {
+    "stationid": "307",
+    "stationname": "ZHANGYANG",
+    "count": "645152",
+    "站点中文名": "长阳",
+    "刷卡排名": "122"
+  },
+  {
+    "stationid": "308",
+    "stationname": "DAOTIAN",
+    "count": "246169",
+    "站点中文名": "稻田",
+    "刷卡排名": "254"
+  },
+  {
+    "stationid": "309",
+    "stationname": "DABAOTAI",
+    "count": "249618",
+    "站点中文名": "大葆台",
+    "刷卡排名": "251"
+  },
+  {
+    "stationid": "310",
+    "stationname": "SUZHUANG",
+    "count": "233591",
+    "站点中文名": "苏庄",
+    "刷卡排名": "262"
+  },
+  {
+    "stationid": "311",
+    "stationname": "GUANGYANGCHENG",
+    "count": "203419",
+    "站点中文名": "广阳城",
+    "刷卡排名": "272"
+  },
+  {
+    "stationid": "312",
+    "stationname": "YANCUNDONG",
+    "count": "65001",
+    "站点中文名": "阎村东",
+    "刷卡排名": "313"
+  },
+  {
+    "stationid": "313",
+    "stationname": "TERMINAL 3",
+    "count": "172823",
+    "站点中文名": "3号航站楼",
+    "刷卡排名": "282"
+  },
+  {
+    "stationid": "314",
+    "stationname": "TERMINAL 2",
+    "count": "143838",
+    "站点中文名": "2号航站楼",
+    "刷卡排名": "290"
+  },
+  {
+    "stationid": "315",
+    "stationname": "SUMMER PALACE WEST GATE",
+    "count": "40275",
+    "站点中文名": "颐和园西门",
+    "刷卡排名": "324"
+  },
+  {
+    "stationid": "316",
+    "stationname": "XIANGSHAN",
+    "count": "125539",
+    "站点中文名": "香山",
+    "刷卡排名": "295"
+  },
+  {
+    "stationid": "317",
+    "stationname": "BOTANICAL GARDEN",
+    "count": "99964",
+    "站点中文名": "植物园",
+    "刷卡排名": "303"
+  },
+  {
+    "stationid": "318",
+    "stationname": "CHAPENG",
+    "count": "62638",
+    "站点中文名": "茶棚",
+    "刷卡排名": "314"
+  },
+  {
+    "stationid": "319",
+    "stationname": "WAN'AN",
+    "count": "10704",
+    "站点中文名": "万安",
+    "刷卡排名": "329"
+  },
+  {
+    "stationid": "320",
+    "stationname": "MAGEZHUANG",
+    "count": "40452",
+    "站点中文名": "马各庄",
+    "刷卡排名": "323"
+  },
+  {
+    "stationid": "321",
+    "stationname": "YANSHAN",
+    "count": "83461",
+    "站点中文名": "燕山",
+    "刷卡排名": "308"
+  },
+  {
+    "stationid": "322",
+    "stationname": "ZICAOWU",
+    "count": "12863",
+    "站点中文名": "紫草坞",
+    "刷卡排名": "328"
+  },
+  {
+    "stationid": "323",
+    "stationname": "DASHIHEDONG",
+    "count": "13179",
+    "站点中文名": "大石河东",
+    "刷卡排名": "327"
+  },
+  {
+    "stationid": "324",
+    "stationname": "YANCUN",
+    "count": "53978",
+    "站点中文名": "阎村",
+    "刷卡排名": "318"
+  },
+  {
+    "stationid": "325",
+    "stationname": "RAOYUEFU",
+    "count": "50285",
+    "站点中文名": "饶乐府",
+    "刷卡排名": "319"
+  },
+  {
+    "stationid": "326",
+    "stationname": "FANGSHAN CHENGGUAN",
+    "count": "75938",
+    "站点中文名": "房山城关",
+    "刷卡排名": "310"
+  },
+  {
+    "stationid": "327",
+    "stationname": "XINGCHENG",
+    "count": "82620",
+    "站点中文名": "星城",
+    "刷卡排名": "309"
+  },
+  {
+    "stationid": "328",
+    "stationname": "RONGCHANG DONGJIE",
+    "count": "413654",
+    "站点中文名": "荣昌东街",
+    "刷卡排名": "199"
+  },
+  {
+    "stationid": "329",
+    "stationname": "YIZHUANGQIAO",
+    "count": "291024",
+    "站点中文名": "亦庄桥",
+    "刷卡排名": "243"
+  },
+  {
+    "stationid": "330",
+    "stationname": "TONGJI NANLU",
+    "count": "567550",
+    "站点中文名": "同济南路",
+    "刷卡排名": "149"
+  },
+  {
+    "stationid": "331",
+    "stationname": "YIZHUANG CULTURE PARK",
+    "count": "174924",
+    "站点中文名": "亦庄文化园",
+    "刷卡排名": "281"
+  },
+  {
+    "stationid": "332",
+    "stationname": "XIAOHONGMEN",
+    "count": "324817",
+    "站点中文名": "小红门",
+    "刷卡排名": "226"
+  },
+  {
+    "stationid": "333",
+    "stationname": "CIQUNAN",
+    "count": "201880",
+    "站点中文名": "次渠南",
+    "刷卡排名": "273"
+  },
+  {
+    "stationid": "334",
+    "stationname": "CIQU",
+    "count": "121827",
+    "站点中文名": "次渠",
+    "刷卡排名": "298"
+  },
+  {
+    "stationid": "335",
+    "stationname": "JIUGONG",
+    "count": "516063",
+    "站点中文名": "旧宫",
+    "刷卡排名": "166"
+  },
+  {
+    "stationid": "336",
+    "stationname": "WANYUAN JIE",
+    "count": "243121",
+    "站点中文名": "万源街",
+    "刷卡排名": "255"
+  },
+  {
+    "stationid": "337",
+    "stationname": "JINGHAI LU",
+    "count": "479064",
+    "站点中文名": "经海路",
+    "刷卡排名": "178"
+  },
+  {
+    "stationid": "338",
+    "stationname": "XIAOCUN",
+    "count": "178312",
+    "站点中文名": "肖村",
+    "刷卡排名": "278"
+  },
+  {
+    "stationid": "339",
+    "stationname": "RONGJING DONGJIE",
+    "count": "411336",
+    "站点中文名": "荣京东街",
+    "刷卡排名": "203"
+  },
+  {
+    "stationid": "340",
+    "stationname": "YIZHUANG RAILWAY STATION",
+    "count": "28525",
+    "站点中文名": "亦庄火车站",
+    "刷卡排名": "325"
+  }
+]
